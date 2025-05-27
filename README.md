@@ -1,7 +1,7 @@
  
  
 ---
-  للمستودع الرئيسي (`Innovation Hub`)**  
+  للمستودع الرئيسي (`Innovation Hub`)  
  .  
 
 ```markdown
@@ -48,43 +48,3 @@ git submodule update --init --recursive
 ```
 
 ---
-
-### **📂 README.md للمستودع الفرعي (`Classification of Flower Structure TM1`)**  
-ضع هذا النص داخل `C:\Users\ali\Desktop\Innovation_Hub_New\Classification of flower structure_TM1\README.md` لضمان توضيح دور المستودع في التصنيف وتحليل الزهور.  
-
-```markdown
-# 🌸 **Classification of Flower Structure TM1**  
-🚀 **AI-Powered Flower Classification for Smart Agriculture**  
-
-This repository features an advanced **deep learning model** designed for accurate flower classification using **Oxford Flowers 102 Dataset**.  
-
-## 🔹 **Repository Structure**  
-📂 `datasets/` → Contains flower images used for training.  
-📂 `models/` → Stores pre-trained models for classification.  
-📂 `scripts/` → Python scripts for training and executing the model.  
-📂 `impact_metrics/` → Performance evaluation tools ensuring high classification accuracy.  
-
-## 🔹 **How to Run the Model**  
-1️⃣ **Install dependencies**  
-```bash
-pip install -r requirements.txt
-```
-2️⃣ **Train the model using the dataset**  
-```bash
-python train_model.py --dataset datasets/oxford_flowers
-```
-3️⃣ **Execute AI classification on new flower images**  
-```bash
-python predict.py --image example_flower.jpg
-```
-
-## 🔹 **Integration with Innovation Hub**  
-This repository is part of **Innovation Hub**, enabling smart agricultural classification and AI-driven flower analysis.  
-
-🚀 **This project supports AI-driven floral classification and environmental impact studies!**
-```
-
----
-
- 
-
