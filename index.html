@@ -12,7 +12,7 @@
         <h1>مشروع Smart Flavor Farm</h1>
         <p>منصة ذكاء اصطناعي لتحليل الغذاء وتحسين تجربة المستخدم</p>
         <marquee behavior="scroll" direction="right">
-            ⚠️ تحديث هام: جرب تحليل المحتوى وتحويله إلى باركود فريد! 🌟
+            ⚠️ تحديث هام: تحليل المحتوى وتحويله إلى باركود محمي متاح الآن! 🌟
         </marquee>
     </header>
 
@@ -21,8 +21,9 @@
             <li><a href="#overview">نظرة عامة</a></li>
             <li><a href="#classification">إدخال البيانات</a></li>
             <li><a href="#analysis-selection">إعداد التحليل</a></li>
+            <li><a href="#execution-method">طريقة التنفيذ</a></li>
             <li><a href="#analysis">نتائج التحليل</a></li>
-            <li><a href="#barcode">تحويل إلى باركود</a></li>
+            <li><a href="#barcode">تحويل إلى باركود محمي</a></li>
             <li><a href="#store">المتجر</a></li>
             <li><a href="#developer-access">تجربة المطور</a></li>
             <li><a href="#contact">تواصل معنا</a></li>
@@ -53,29 +54,27 @@
     <section id="analysis-selection">
         <h2>إعداد التحليل المتقدم</h2>
         <form>
-            <label for="project-selection">اختر المشروع:</label>
-            <select id="project-selection">
-                <option value="agriculture">تحليل المحاصيل الزراعية</option>
+            <label for="model-selection">اختر النموذج المناسب:</label>
+            <select id="model-selection">
+                <option value="flower-classification">تصنيف الزهور</option>
                 <option value="food-quality">تحليل جودة الأغذية</option>
                 <option value="flavor-analysis">تحليل النكهات</option>
             </select><br><br>
 
-            <label for="media-selection">حدد نوع الوسائط المدخلة:</label>
-            <select id="media-selection">
-                <option value="image">صور</option>
-                <option value="video">فيديو</option>
-                <option value="text">نصوص ووصف</option>
-            </select><br><br>
-
-            <label for="model-selection">اختر النموذج المناسب:</label>
-            <select id="model-selection">
-                <option value="gpu-high-accuracy">GPU - دقة عالية</option>
-                <option value="cpu-balanced">CPU - متوازن بين الدقة والسرعة</option>
-                <option value="system-36">نظام 36 - أسرع أداء</option>
-                <option value="system-64">نظام 64 - دقة أكثر تطورًا</option>
-            </select><br><br>
-
             <button type="button" onclick="startAnalysis()">بدء التحليل</button>
+        </form>
+    </section>
+
+    <section id="execution-method">
+        <h2>طريقة تنفيذ النموذج</h2>
+        <form>
+            <label for="execution-selection">اختر طريقة التنفيذ:</label>
+            <select id="execution-selection">
+                <option value="gpu-high-accuracy">GPU - دقة عالية</option>
+                <option value="cpu-balanced">CPU - متوازن</option>
+                <option value="system-32">نظام 32 - أكثر دقة</option>
+                <option value="system-64">نظام 64 - أسرع أداء</option>
+            </select><br><br>
         </form>
     </section>
 
@@ -87,7 +86,7 @@
     </section>
 
     <section id="barcode">
-        <h2>تحويل المحتوى إلى باركود</h2>
+        <h2>تحويل المحتوى إلى باركود محمي</h2>
         <button onclick="generateBarcode()">🔗 إنشاء باركود</button>
         <div id="barcode-container"></div>
     </section>
@@ -102,18 +101,17 @@
         }
 
         function startAnalysis() {
-            let project = document.getElementById("project-selection").value;
-            let media = document.getElementById("media-selection").value;
             let model = document.getElementById("model-selection").value;
+            let execution = document.getElementById("execution-selection").value;
 
             document.getElementById("results-container").innerHTML = 
-                `<p>تم تحديد <strong>${project}</strong> باستخدام <strong>${media}</strong> مع نموذج <strong>${model}</strong>.</p>
+                `<p>تم تحديد النموذج <strong>${model}</strong> باستخدام طريقة التنفيذ <strong>${execution}</strong>.</p>
                  <p>🔍 جاري تشغيل التحليل...</p>`;
         }
 
         function generateBarcode() {
             document.getElementById("barcode-container").innerHTML = 
-                "<p>📌 تم إنشاء الباركود! يمكنك حفظه أو مسحه ضوئيًا للحصول على المعلومات.</p>";
+                "<p>📌 تم إنشاء الباركود المحمي! يمكنك حفظه أو مسحه ضوئيًا للحصول على المعلومات.</p>";
         }
     </script>
 
