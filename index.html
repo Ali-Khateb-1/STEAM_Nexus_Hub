@@ -13,50 +13,36 @@
         <p>نقطة الربط لكل المشاريع والملفات داخل حساب GitHub</p>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="main-project/">🔗 المشروع الرئيسي</a></li>
-            <li><a href="sub-project-1/">📂 مستودع فرعي 1</a></li>
-            <li><a href="sub-project-2/">📂 مستودع فرعي 2</a></li>
-            <li><a href="analytics.html">📊 إحصائيات المستودعات</a></li>
-            <li><a href="updates.html">🔄 آخر التحديثات</a></li>
-        </ul>
-    </nav>
+    <section id="user-choice">
+        <h2>⚡ اختر طريقة الاستخدام</h2>
+        <button onclick="redirectUser('user')">👤 الدخول كمستخدم</button>
+        <button onclick="redirectUser('developer')">🛠️ الدخول كمطور</button>
+    </section>
 
     <section id="overview">
         <h2>نظرة عامة</h2>
         <p>هذه الصفحة تربط كل المشاريع الفرعية والملفات داخل المستودع الرئيسي، مما يسهل إدارة البيانات والتنقل بينها.</p>
     </section>
 
-    <section id="status">
-        <h2>🔍 حالة المستودع</h2>
-        <div id="repo-status">
-            <p>✅ جميع المشاريع متصلة. لا توجد أخطاء في GitHub Actions.</p>
-        </div>
-    </section>
-
-    <section id="control-panel">
-        <h2>⚙️ إدارة المشاريع</h2>
-        <button onclick="syncProjects()">🛠️ تحديث المستودعات</button>
-        <button onclick="backupData()">💾 إنشاء نسخة احتياطية</button>
-        <button onclick="optimizePerformance()">🚀 تحسين الأداء</button>
-    </section>
+    <nav>
+        <ul>
+            <li><a href="dashboard.html">⚙️ لوحة الإدارة</a></li>
+            <li><a href="updates.html">🔄 آخر التحديثات</a></li>
+            <li><a href="projects.html">📂 المشاريع الفرعية</a></li>
+        </ul>
+    </nav>
 
     <footer>
         <p>&copy; 2025 مركز التحكم في Smart Flavor Farm - جميع الحقوق محفوظة</p>
     </footer>
 
     <script>
-        function syncProjects() {
-            document.getElementById("repo-status").innerHTML = "<p>🔄 جاري مزامنة المستودعات...</p>";
-        }
-
-        function backupData() {
-            document.getElementById("repo-status").innerHTML = "<p>💾 تم إنشاء نسخة احتياطية لجميع المشاريع!</p>";
-        }
-
-        function optimizePerformance() {
-            document.getElementById("repo-status").innerHTML = "<p>🚀 تم تحسين أداء المستودع بنجاح!</p>";
+        function redirectUser(role) {
+            if (role === 'user') {
+                window.location.href = "user-dashboard.html";
+            } else {
+                window.location.href = "developer-dashboard.html";
+            }
         }
     </script>
 
