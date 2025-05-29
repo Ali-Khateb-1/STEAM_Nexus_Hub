@@ -1,16 +1,18 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: black;
-    color: #fff;
+    font-family: 'Questrial', sans-serif;
+    background: linear-gradient(90deg, #2c2c2c, #5a3e2b, #8a6e51);
+    color: #ffffff;
+    text-align: center;
     margin: 0;
     padding: 0;
 }
 
-header {
+header, footer {
     background-color: #7b1f1f;
     color: white;
-    text-align: center;
     padding: 20px;
+    border: 5px solid silver;
+    border-radius: 12px;
 }
 
 nav ul {
@@ -20,6 +22,8 @@ nav ul {
     flex-wrap: wrap;
     justify-content: center;
     background-color: #5a3d2b;
+    border: 3px solid silver;
+    border-radius: 8px;
 }
 
 nav ul li {
@@ -30,34 +34,59 @@ nav ul li a {
     color: white;
     text-decoration: none;
     padding: 10px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffcc66;
 }
 
 section {
     padding: 20px;
-    background: #2e1f14;
+    background: rgba(90, 62, 43, 0.8);
     margin: 20px;
     border-radius: 8px;
+    border: 3px solid silver;
 }
 
 button {
     background-color: #5a3d2b;
     color: white;
-    padding: 10px 15px;
-    border: none;
+    padding: 12px 20px;
+    border: 2px solid silver;
     border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
 }
 
 button:hover {
     background-color: #3e2820;
 }
 
-#barcode-container {
+/* تحسين عرض خيارات المستخدم والمطور */
+#user-choice {
+    margin: 20px auto;
     padding: 20px;
-    background: #1a1a1a;
-    border-radius: 8px;
+    border: 4px solid silver;
+    border-radius: 10px;
+    background-color: #2e1f14;
+    width: 50%;
 }
 
-/* تحسين عرض الهاتف */
+.social-links a {
+    display: inline-block;
+    margin: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: #e94560;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ffffff;
+}
+
 @media screen and (max-width: 768px) {
     nav ul {
         flex-direction: column;
@@ -67,5 +96,9 @@ button:hover {
     section {
         width: 90%;
         margin: 10px auto;
+    }
+
+    #user-choice {
+        width: 80%;
     }
 }
