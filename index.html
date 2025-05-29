@@ -3,91 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مشاريع الذكاء الصناعي والابتكار - علي الخطيب</title>
-    <style>
-        body {
-            font-family: 'Questrial', sans-serif;
-            background: linear-gradient(90deg, #2c2c2c, #5a3e2b, #8a6e51);
-            color: #ffffff;
-            text-align: center;
-        }
-        .marquee-container {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
-            background: #e94560;
-            color: white;
-            padding: 10px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .marquee-text {
-            display: inline-block;
-            animation: moveText 15s linear infinite;
-        }
-        @keyframes moveText {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
-        }
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-            background: rgba(44, 44, 44, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-        }
-        .buttons button {
-            display: inline-block;
-            margin: 10px;
-            font-size: 18px;
-            text-decoration: none;
-            color: #e94560;
-            padding: 10px 15px;
-            border: none;
-            cursor: pointer;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-        .buttons button:hover {
-            color: #ffffff;
-            background-color: #e94560;
-        }
-    </style>
+    <title>Smart Flavor Farm - الصفحة الرئيسية</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div class="marquee-container">
-        <span class="marquee-text">🚀 جديد! سيتم قريبًا دعم تشغيل نموذج الذكاء الاصطناعي. تابع التحديثات! 🚀</span>
-    </div>
+    <header>
+        <h1>مشروع Smart Flavor Farm</h1>
+        <p>منصة ذكاء اصطناعي لتحليل الغذاء وتحسين تجربة المستخدم</p>
+    </header>
 
-    <div class="container">
-        <h1>🚀 مشاريع الابتكار الصناعي والذكاء الاصطناعي - علي الخطيب</h1>
+    <nav>
+        <ul>
+            <li><a href="#overview">نظرة عامة</a></li>
+            <li><a href="#classification">تصنيف الصور</a></li>
+            <li><a href="#ai_models">نماذج الذكاء الاصطناعي</a></li>
+            <li><a href="#impact">تحليل التأثير</a></li>
+            <li><a href="#media">وسائط المشروع</a></li>
+            <li><a href="#interaction">التفاعل والتحليل</a></li>
+        </ul>
+    </nav>
 
-        <div class="section buttons">
-            <h2>🔗 المشاريع التفاعلية</h2>
-            <button onclick="alert('📌 هذا المشروع سيكون متاحًا قريبًا!')">📄 إدخال معلومات</button>
-            <button onclick="alert('📌 سيتم دعم رفع الصور قريبًا!')">📸 إدخال صورة</button>
-            <button onclick="alert('📌 سيتم دعم رفع الفيديو قريبًا!')">🎥 إدخال فيديو</button>
-            <button onclick="alert('📌 سيتم دعم تشغيل النموذج قريبًا!')">🤖 تشغيل الذكاء الاصطناعي</button>
-            <button onclick="alert('📌 سيتم دعم نتائج الذكاء الاصطناعي قريبًا!')">📊 عرض النتائج</button>
+    <section id="overview">
+        <h2>نظرة عامة على المشروع</h2>
+        <p>يهدف المشروع إلى تحسين جودة المحاصيل وتحليل النكهات باستخدام الذكاء الاصطناعي.</p>
+    </section>
+
+    <section id="classification">
+        <h2>تصنيف الصور</h2>
+        <div class="gallery">
+            <img src="images/flower_sample.jpg" alt="زهور">
+            <img src="images/fruit_sample.jpg" alt="فواكه">
+            <img src="images/pizza_sample.jpg" alt="بيتزا">
         </div>
+        <input type="file" id="imageUpload" accept="image/*">
+        <button onclick="analyzeImages()">تحليل الصور</button>
+    </section>
 
-        <div class="section">
-            <h2>📞 اتصل بنا</h2>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/ali-khateeb-steam-ai-data-education-tech" target="_blank">🔗 LinkedIn - علي الخطيب</a>
-                <a href="https://github.com/Ali-Khateb-1" target="_blank">🔗 GitHub - علي الخطيب</a>
-                <a href="https://www.facebook.com/SpecialistAliKhatib/" target="_blank">🔗 Facebook</a>
-                <a href="https://www.instagram.com/managing_web_pages/" target="_blank">🔗 Instagram</a>
-                <a href="http://www.youtube.com/@Steam-team.direction" target="_blank">🔗 YouTube</a>
-            </div>
-            <p>📧 البريد الإلكتروني: ali_alkhateeb91@hotmail.com</p>
-            <p>📞 الهاتف: +970 568033662</p>
-        </div>
-    </div>
+    <section id="ai_models">
+        <h2>نماذج الذكاء الاصطناعي</h2>
+        <p>تستخدم النماذج الذكية مثل `models.N_7` في تحليل وتصنيف المنتجات الغذائية بدقة عالية.</p>
+        <button onclick="downloadModel()">تحميل النموذج</button>
+    </section>
+
+    <section id="impact">
+        <h2>تحليل التأثير</h2>
+        <p>يتم تقييم استراتيجيات التسويق عبر `Impact Metrics Studio` لتحليل الأداء وتعزيز الفاعلية.</p>
+        <button onclick="viewImpactData()">عرض البيانات</button>
+    </section>
+
+    <section id="media">
+        <h2>وسائط المشروع</h2>
+        <input type="file" id="videoUpload" accept="video/*">
+        <button onclick="uploadVideo()">إضافة فيديو</button>
+        <button onclick="navigateToGallery()">عرض الوسائط</button>
+    </section>
+
+    <section id="interaction">
+        <h2>التفاعل والتحليل</h2>
+        <p>استخدم الذكاء الاصطناعي لتقديم تحليلات ديناميكية حول بيانات المشروع.</p>
+        <textarea id="userInput" placeholder="أدخل استفسارك هنا..."></textarea>
+        <button onclick="processUserQuery()">تحليل الاستفسار</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 مشروع Smart Flavor Farm - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+        function analyzeImages() {
+            let uploadedImage = document.getElementById("imageUpload").files[0];
+            if (uploadedImage) {
+                alert("جاري تحليل الصورة باستخدام النموذج الذكي...");
+            } else {
+                alert("يرجى تحميل صورة أولاً!");
+            }
+        }
+
+        function downloadModel() {
+            alert("يتم الآن تحميل نموذج الذكاء الاصطناعي...");
+        }
+
+        function viewImpactData() {
+            alert("عرض بيانات تأثير التسويق...");
+        }
+
+        function uploadVideo() {
+            let uploadedVideo = document.getElementById("videoUpload").files[0];
+            if (uploadedVideo) {
+                alert("تم تحميل الفيديو بنجاح!");
+            } else {
+                alert("يرجى تحديد ملف فيديو أولا!");
+            }
+        }
+
+        function navigateToGallery() {
+            window.location.href = "media.html";
+        }
+
+        function processUserQuery() {
+            let query = document.getElementById("userInput").value;
+            if (query.trim() !== "") {
+                alert("تحليل الاستفسار: " + query);
+            } else {
+                alert("يرجى إدخال استفسار أولاً!");
+            }
+        }
+    </script>
 
 </body>
 </html>
