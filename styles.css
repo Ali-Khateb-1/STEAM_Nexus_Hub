@@ -15,13 +15,21 @@ header {
     padding: 20px;
 }
 
+/* شريط متحرك */
+marquee {
+    background-color: #5a3d2b; /* بني داكن */
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+}
+
 /* تنسيق شريط التنقل */
 nav ul {
     list-style: none;
     padding: 0;
     display: flex;
     justify-content: center;
-    background-color: #7b1f1f; /* النبيذي */
+    background-color: #5a3d2b; /* بني داكن */
 }
 
 nav ul li {
@@ -37,7 +45,7 @@ nav ul li a {
 /* تنسيق الأقسام */
 section {
     padding: 20px;
-    background: #1a1a1a; /* خلفية داكنة */
+    background: #2e1f14; /* خلفية بنية خفيفة */
     margin: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
@@ -45,7 +53,7 @@ section {
 
 /* تحسين الأزرار */
 button {
-    background-color: #7b1f1f; /* النبيذي */
+    background-color: #5a3d2b; /* بني متناسق */
     color: white;
     padding: 10px 15px;
     border: none;
@@ -54,7 +62,7 @@ button {
 }
 
 button:hover {
-    background-color: #4b0d0d; /* لون أكثر قتامة عند التحويم */
+    background-color: #3e2820; /* بني أغمق عند التحويم */
 }
 
 /* تنسيق الصور والفيديو */
