@@ -10,7 +10,7 @@
 
     <header>
         <h1>مشروع Smart Flavor Farm</h1>
-        <p>منصة ذكاء اصطناعي لتحليل الطعام والنكهات</p>
+        <p>منصة ذكاء اصطناعي لتحليل الطعام وتصنيف الزهور</p>
         <marquee behavior="scroll" direction="right">
             🌸 تجربة تصنيف الزهور وتحليل التأثير متاحة الآن! 🚀
         </marquee>
@@ -22,7 +22,7 @@
             <li><a href="#classification">إدخال البيانات</a></li>
             <li><a href="#analysis-selection">إعداد التحليل</a></li>
             <li><a href="#execution-method">طريقة التنفيذ</a></li>
-            <li><a href="#flower-classification">تصنيف الزهور</a></li>
+            <li><a href="flower_classification.html">🌸 مصنف الزهور</a></li>
             <li><a href="#barcode">تحويل إلى باركود محمي</a></li>
             <li><a href="#store">المتجر</a></li>
             <li><a href="#developer-access">تجربة المطور</a></li>
@@ -32,13 +32,36 @@
 
     <section id="overview">
         <h2>نظرة عامة على المشروع</h2>
-        <p>يهدف المشروع إلى تحسين جودة المحاصيل وتحليل النكهات باستخدام الذكاء الاصطناعي.</p>
+        <p>يهدف المشروع إلى تحسين جودة المحاصيل وتصنيف الزهور باستخدام الذكاء الاصطناعي.</p>
     </section>
 
-    <section id="flower-classification">
-        <h2>تصنيف الزهور وتحليل التأثير</h2>
-        <p>🔬 استخدم الذكاء الاصطناعي لتصنيف الزهور وتحليل تأثيرها البيئي والجمالي.</p>
-        <button onclick="navigateToFlowerPage()">🌸 انتقل إلى مصنف الزهور</button>
+    <section id="classification">
+        <h2>إدخال البيانات للتحليل</h2>
+        <form>
+            <label for="image-upload">تحميل صورة:</label>
+            <input type="file" id="image-upload" accept="image/*"><br><br>
+
+            <label for="video-upload">تحميل فيديو:</label>
+            <input type="file" id="video-upload" accept="video/*"><br><br>
+
+            <label for="text-description">إدخال نصي:</label>
+            <textarea id="text-description" placeholder="أدخل وصف المنتج أو التحليل المطلوب"></textarea><br><br>
+
+            <button type="button" onclick="analyzeData()">تحليل البيانات</button>
+        </form>
+    </section>
+
+    <section id="execution-method">
+        <h2>طريقة تنفيذ النموذج</h2>
+        <form>
+            <label for="execution-selection">اختر طريقة التنفيذ:</label>
+            <select id="execution-selection">
+                <option value="gpu-high-accuracy">GPU - دقة عالية</option>
+                <option value="cpu-balanced">CPU - متوازن</option>
+                <option value="system-32">نظام 32 - أكثر دقة</option>
+                <option value="system-64">نظام 64 - أسرع أداء</option>
+            </select><br><br>
+        </form>
     </section>
 
     <section id="barcode">
@@ -52,13 +75,12 @@
     </footer>
 
     <script>
-        function navigateToFlowerPage() {
-            window.location.href = "flower_classification.html";
+        function analyzeData() {
+            document.getElementById("barcode-container").innerHTML = "<p>جاري تحليل البيانات باستخدام الذكاء الاصطناعي...</p>";
         }
 
         function generateBarcode() {
-            document.getElementById("barcode-container").innerHTML = 
-                "<p>📌 تم إنشاء الباركود المحمي! يمكنك حفظه أو مسحه ضوئيًا للحصول على المعلومات.</p>";
+            document.getElementById("barcode-container").innerHTML = "<p>📌 تم إنشاء الباركود المحمي! يمكنك حفظه أو مسحه ضوئيًا للحصول على المعلومات.</p>";
         }
     </script>
 
