@@ -39,10 +39,12 @@
         <h2>إدخال البيانات للتحليل</h2>
         <form>
             <label for="image-upload">تحميل صورة:</label>
-            <input type="file" id="image-upload" accept="image/*"><br><br>
+            <input type="file" id="image-upload" accept="image/*" onchange="previewImage()">
+            <img id="image-preview" style="max-width: 300px; display: none;"><br><br>
 
             <label for="video-upload">تحميل فيديو:</label>
-            <input type="file" id="video-upload" accept="video/*"><br><br>
+            <input type="file" id="video-upload" accept="video/*" onchange="previewVideo()">
+            <video id="video-preview" controls style="max-width: 300px; display: none;"></video><br><br>
 
             <label for="text-description">إدخال نصي:</label>
             <textarea id="text-description" placeholder="أدخل وصف المنتج أو التحليل المطلوب"></textarea><br><br>
@@ -75,6 +77,34 @@
     </footer>
 
     <script>
+        function previewImage() {
+            const input = document.getElementById("image-upload");
+            const preview = document.getElementById("image-preview");
+            
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = "block";
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function previewVideo() {
+            const input = document.getElementById("video-upload");
+            const preview = document.getElementById("video-preview");
+            
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = "block";
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
         function analyzeData() {
             document.getElementById("barcode-container").innerHTML = "<p>جاري تحليل البيانات باستخدام الذكاء الاصطناعي...</p>";
         }
