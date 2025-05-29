@@ -57,7 +57,7 @@ button:hover {
     background-color: #3e2820;
 }
 
-#results-container {
+#results-container, #barcode-container {
     padding: 20px;
     background: #1a1a1a;
     border-radius: 8px;
