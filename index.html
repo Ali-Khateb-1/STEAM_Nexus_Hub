@@ -16,10 +16,10 @@
     <nav>
         <ul>
             <li><a href="#overview">نظرة عامة</a></li>
-            <li><a href="#classification">تصنيف الصور</a></li>
-            <li><a href="#ai_models">نماذج الذكاء الاصطناعي</a></li>
-            <li><a href="#impact">تحليل التأثير</a></li>
-            <li><a href="#media">وسائط المشروع</a></li>
+            <li><a href="#classification">إدخال البيانات</a></li>
+            <li><a href="#analysis">نتائج التحليل</a></li>
+            <li><a href="#store">المتجر</a></li>
+            <li><a href="#supplier-access">وصول الموردين</a></li>
             <li><a href="#contact">تواصل معنا</a></li>
         </ul>
     </nav>
@@ -30,23 +30,39 @@
     </section>
 
     <section id="classification">
-        <h2>تصنيف الصور</h2>
-        <div class="gallery">
-            <img src="images/flower_sample.jpg" alt="زهور">
-            <img src="images/fruit_sample.jpg" alt="فواكه">
-            <img src="images/pizza_sample.jpg" alt="بيتزا">
-        </div>
-        <button onclick="analyzeImages()">تحليل الصور</button>
+        <h2>إدخال البيانات للتحليل</h2>
+        <form>
+            <label for="image-upload">تحميل صورة:</label>
+            <input type="file" id="image-upload" accept="image/*"><br><br>
+
+            <label for="video-upload">تحميل فيديو:</label>
+            <input type="file" id="video-upload" accept="video/*"><br><br>
+
+            <label for="text-description">إدخال نصي:</label>
+            <textarea id="text-description" placeholder="أدخل وصف المنتج أو التحليل المطلوب"></textarea><br><br>
+
+            <button type="button" onclick="analyzeData()">تحليل البيانات</button>
+        </form>
     </section>
 
-    <section id="contact">
-        <h2>تواصل معنا</h2>
-        <p>تابعنا على وسائل التواصل الاجتماعي:</p>
-        <ul>
-            <li><a href="https://twitter.com" target="_blank">تويتر</a></li>
-            <li><a href="https://facebook.com" target="_blank">فيسبوك</a></li>
-            <li><a href="https://linkedin.com" target="_blank">لينكدإن</a></li>
-        </ul>
+    <section id="analysis">
+        <h2>نتائج التحليل</h2>
+        <div id="analysis-results">
+            <p>لم يتم تحليل أي بيانات بعد...</p>
+        </div>
+    </section>
+
+    <section id="store">
+        <h2>المتجر الإلكتروني</h2>
+        <p>يمكنك تصفح المنتجات من خلال <a href="store.html">زيارة المتجر</a>.</p>
+    </section>
+
+    <section id="supplier-access">
+        <h2>وصول الموردين</h2>
+        <p>المستودع المتاح فقط للموردين. يرجى إدخال رمز الدخول للوصول إلى المحتوى:</p>
+        <input type="password" id="supplier-code" placeholder="أدخل الرمز">
+        <button onclick="validateAccess()">إرسال</button>
+        <p id="access-message"></p>
     </section>
 
     <footer>
@@ -54,8 +70,17 @@
     </footer>
 
     <script>
-        function analyzeImages() {
-            alert("جاري تحليل الصور باستخدام النموذج الذكي...");
+        function analyzeData() {
+            document.getElementById("analysis-results").innerHTML = "<p>جاري تحليل البيانات باستخدام الذكاء الاصطناعي...</p>";
+        }
+
+        function validateAccess() {
+            let code = document.getElementById("supplier-code").value;
+            if (code === "1234") {
+                document.getElementById("access-message").innerText = "تم التحقق! لديك وصول إلى المستودع.";
+            } else {
+                document.getElementById("access-message").innerText = "رمز خاطئ، يرجى المحاولة مرة أخرى.";
+            }
         }
     </script>
 
