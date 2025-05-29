@@ -11,6 +11,9 @@
     <header>
         <h1>مشروع Smart Flavor Farm</h1>
         <p>منصة ذكاء اصطناعي لتحليل الغذاء وتحسين تجربة المستخدم</p>
+        <marquee behavior="scroll" direction="left">
+            🔥 تحديث جديد! جرب تحليل الصور والنكهات بذكاء اصطناعي متطور. 🌱✨
+        </marquee>
     </header>
 
     <nav>
@@ -19,7 +22,7 @@
             <li><a href="#classification">إدخال البيانات</a></li>
             <li><a href="#analysis">نتائج التحليل</a></li>
             <li><a href="#store">المتجر</a></li>
-            <li><a href="#supplier-access">وصول الموردين</a></li>
+            <li><a href="#developer-access">تجربة المطور</a></li>
             <li><a href="#contact">تواصل معنا</a></li>
         </ul>
     </nav>
@@ -57,12 +60,12 @@
         <p>يمكنك تصفح المنتجات من خلال <a href="store.html">زيارة المتجر</a>.</p>
     </section>
 
-    <section id="supplier-access">
-        <h2>وصول الموردين</h2>
-        <p>المستودع المتاح فقط للموردين. يرجى إدخال رمز الدخول للوصول إلى المحتوى:</p>
-        <input type="password" id="supplier-code" placeholder="أدخل الرمز">
-        <button onclick="validateAccess()">إرسال</button>
-        <p id="access-message"></p>
+    <section id="developer-access">
+        <h2>تجربة المطور</h2>
+        <p>هذا القسم مخصص للمطورين فقط. يرجى إدخال رمز الوصول:</p>
+        <input type="password" id="developer-code" placeholder="أدخل الرمز">
+        <button onclick="validateDeveloperAccess()">إرسال</button>
+        <p id="developer-message"></p>
     </section>
 
     <footer>
@@ -74,12 +77,12 @@
             document.getElementById("analysis-results").innerHTML = "<p>جاري تحليل البيانات باستخدام الذكاء الاصطناعي...</p>";
         }
 
-        function validateAccess() {
-            let code = document.getElementById("supplier-code").value;
-            if (code === "1234") {
-                document.getElementById("access-message").innerText = "تم التحقق! لديك وصول إلى المستودع.";
+        function validateDeveloperAccess() {
+            let code = document.getElementById("developer-code").value;
+            if (code === "5678") {
+                document.getElementById("developer-message").innerText = "تم التحقق! لديك وصول إلى بيئة المطورين.";
             } else {
-                document.getElementById("access-message").innerText = "رمز خاطئ، يرجى المحاولة مرة أخرى.";
+                document.getElementById("developer-message").innerText = "رمز خاطئ، يرجى المحاولة مرة أخرى.";
             }
         }
     </script>
