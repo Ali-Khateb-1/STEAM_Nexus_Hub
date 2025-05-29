@@ -11,6 +11,25 @@
             color: #ffffff;
             text-align: center;
         }
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            background: #e94560;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .marquee-text {
+            display: inline-block;
+            animation: moveText 15s linear infinite;
+        }
+        @keyframes moveText {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
         .container {
             max-width: 1200px;
             margin: auto;
@@ -19,20 +38,20 @@
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
-        .social-links a, .buttons button {
+        .buttons button {
             display: inline-block;
             margin: 10px;
-            font-size: 20px;
+            font-size: 18px;
             text-decoration: none;
             color: #e94560;
-            padding: 10px 20px;
+            padding: 10px 15px;
             border: none;
             cursor: pointer;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 5px;
             transition: background 0.3s ease, color 0.3s ease;
         }
-        .social-links a:hover, .buttons button:hover {
+        .buttons button:hover {
             color: #ffffff;
             background-color: #e94560;
         }
@@ -40,8 +59,21 @@
 </head>
 <body>
 
+    <div class="marquee-container">
+        <span class="marquee-text">🚀 جديد! سيتم قريبًا دعم تشغيل نموذج الذكاء الاصطناعي. تابع التحديثات! 🚀</span>
+    </div>
+
     <div class="container">
         <h1>🚀 مشاريع الابتكار الصناعي والذكاء الاصطناعي - علي الخطيب</h1>
+
+        <div class="section buttons">
+            <h2>🔗 المشاريع التفاعلية</h2>
+            <button onclick="alert('📌 هذا المشروع سيكون متاحًا قريبًا!')">📄 إدخال معلومات</button>
+            <button onclick="alert('📌 سيتم دعم رفع الصور قريبًا!')">📸 إدخال صورة</button>
+            <button onclick="alert('📌 سيتم دعم رفع الفيديو قريبًا!')">🎥 إدخال فيديو</button>
+            <button onclick="alert('📌 سيتم دعم تشغيل النموذج قريبًا!')">🤖 تشغيل الذكاء الاصطناعي</button>
+            <button onclick="alert('📌 سيتم دعم نتائج الذكاء الاصطناعي قريبًا!')">📊 عرض النتائج</button>
+        </div>
 
         <div class="section">
             <h2>📞 اتصل بنا</h2>
@@ -55,18 +87,7 @@
             <p>📧 البريد الإلكتروني: ali_alkhateeb91@hotmail.com</p>
             <p>📞 الهاتف: +970 568033662</p>
         </div>
-
-        <div class="section buttons">
-            <h2>🚀 استكشاف المشاريع</h2>
-            <button onclick="window.open('https://github.com/Ali-Khateb-1', '_blank')">🔗 زيارة حسابي على GitHub</button>
-            <button onclick="window.open('https://github.com/Ali-Khateb-1/my-online-store', '_blank')">🛒 مستودع المتجر الإلكتروني</button>
-        </div>
-
-        <div class="section">
-            <p class="quote">"نحن لا نزرع الزهور فقط، بل نزرع الأفكار والابتكارات التي ترسم مستقبلًا أكثر ذكاءً واستدامة."</p>
-        </div>
-
     </div>
 
 </body>
-</html> 
+</html>
