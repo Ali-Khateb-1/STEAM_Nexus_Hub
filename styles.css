@@ -1,130 +1,64 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Flavor Farm - الصفحة الرئيسية</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
 
-    <header>
-        <h1>مشروع Smart Flavor Farm</h1>
-        <p>منصة ذكاء اصطناعي لتحليل الغذاء وتحسين تجربة المستخدم</p>
-        <marquee behavior="scroll" direction="right">
-            ⚠️ إعلان هام: تحديث جديد لنتائج تحليل الذكاء الاصطناعي! 🌟
-        </marquee>
-    </header>
+header {
+    background-color: #7b1f1f;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
 
-    <nav>
-        <ul>
-            <li><a href="#overview">نظرة عامة</a></li>
-            <li><a href="#classification">إدخال البيانات</a></li>
-            <li><a href="#analysis-selection">إعداد التحليل</a></li>
-            <li><a href="#analysis">نتائج التحليل</a></li>
-            <li><a href="#store">المتجر</a></li>
-            <li><a href="#developer-access">تجربة المطور</a></li>
-            <li><a href="#contact">تواصل معنا</a></li>
-        </ul>
-    </nav>
+marquee {
+    background-color: #5a3d2b;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+}
 
-    <section id="overview">
-        <h2>نظرة عامة على المشروع</h2>
-        <p>يهدف المشروع إلى تحسين جودة المحاصيل وتحليل النكهات باستخدام الذكاء الاصطناعي.</p>
-    </section>
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #5a3d2b;
+}
 
-    <section id="classification">
-        <h2>إدخال البيانات للتحليل</h2>
-        <form>
-            <label for="image-upload">تحميل صورة:</label>
-            <input type="file" id="image-upload" accept="image/*"><br><br>
+nav ul li {
+    padding: 10px;
+}
 
-            <label for="video-upload">تحميل فيديو:</label>
-            <input type="file" id="video-upload" accept="video/*"><br><br>
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
 
-            <label for="text-description">إدخال نصي:</label>
-            <textarea id="text-description" placeholder="أدخل وصف المنتج أو التحليل المطلوب"></textarea><br><br>
+section {
+    padding: 20px;
+    background: #2e1f14;
+    margin: 20px;
+    border-radius: 8px;
+}
 
-            <button type="button" onclick="analyzeData()">تحليل البيانات</button>
-        </form>
-    </section>
+button {
+    background-color: #5a3d2b;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
 
-    <section id="analysis-selection">
-        <h2>إعداد التحليل المتقدم</h2>
-        <form>
-            <label for="project-selection">اختر المشروع:</label>
-            <select id="project-selection">
-                <option value="agriculture">تحليل المحاصيل الزراعية</option>
-                <option value="food-quality">تحليل جودة الأغذية</option>
-                <option value="flavor-analysis">تحليل النكهات</option>
-            </select><br><br>
+button:hover {
+    background-color: #3e2820;
+}
 
-            <label for="media-selection">حدد نوع الوسائط المدخلة:</label>
-            <select id="media-selection">
-                <option value="image">صور</option>
-                <option value="video">فيديو</option>
-                <option value="text">نصوص ووصف</option>
-            </select><br><br>
-
-            <label for="model-selection">اختر النموذج المناسب:</label>
-            <select id="model-selection">
-                <option value="gpu-high-accuracy">GPU - دقة عالية</option>
-                <option value="cpu-balanced">CPU - متوازن بين الدقة والسرعة</option>
-                <option value="system-36">نظام 36 - أسرع أداء</option>
-                <option value="system-64">نظام 64 - دقة أكثر تطورًا</option>
-            </select><br><br>
-
-            <button type="button" onclick="startAnalysis()">بدء التحليل</button>
-        </form>
-    </section>
-
-    <section id="analysis">
-        <h2>نتائج التحليل</h2>
-        <div id="results-container">
-            <p>لم يتم تحليل أي بيانات بعد...</p>
-        </div>
-    </section>
-
-    <section id="store">
-        <h2>المتجر الإلكتروني</h2>
-        <p>⚠️ عذرًا، هذه الصفحة غير متاحة حاليًا. <br> 😕 تحقق من التحديثات القادمة قريبًا!</p>
-        <img src="images/error_image.jpg" alt="خطأ في المتجر">
-    </section>
-
-    <section id="developer-access">
-        <h2>تجربة المطور</h2>
-        <p>هذا القسم مخصص للمطورين فقط. يرجى إدخال رمز الوصول:</p>
-        <input type="password" id="developer-code" placeholder="أدخل الرمز">
-        <button onclick="validateDeveloperAccess()">إرسال</button>
-        <p id="developer-message"></p>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 مشروع Smart Flavor Farm - جميع الحقوق محفوظة</p>
-    </footer>
-
-    <script>
-        function analyzeData() {
-            document.getElementById("results-container").innerHTML = "<p>جاري تحليل البيانات باستخدام الذكاء الاصطناعي...</p>";
-        }
-
-        function startAnalysis() {
-            let project = document.getElementById("project-selection").value;
-            let media = document.getElementById("media-selection").value;
-            let model = document.getElementById("model-selection").value;
-
-            document.getElementById("results-container").innerHTML = 
-                `<p>تم تحديد <strong>${project}</strong> باستخدام <strong>${media}</strong> مع نموذج <strong>${model}</strong>.</p>
-                 <p>🔍 جاري تشغيل التحليل...</p>`;
-        }
-
-        function validateDeveloperAccess() {
-            let code = document.getElementById("developer-code").value;
-            document.getElementById("developer-message").innerText = (code === "5678") ? 
-                "تم التحقق! لديك وصول إلى بيئة المطورين." : 
-                "رمز خاطئ، يرجى المحاولة مرة أخرى.";
-        }
-    </script>
-
-</body>
-</html>
+#results-container {
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 8px;
+}
