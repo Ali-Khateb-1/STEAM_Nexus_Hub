@@ -10,9 +10,9 @@
 
     <header>
         <h1>مشروع Smart Flavor Farm</h1>
-        <p>منصة ذكاء اصطناعي لتحليل الغذاء وتحسين تجربة المستخدم</p>
+        <p>منصة ذكاء اصطناعي لتحليل الطعام والنكهات</p>
         <marquee behavior="scroll" direction="right">
-            ⚠️ تحديث هام: تحليل المحتوى وتحويله إلى باركود محمي متاح الآن! 🌟
+            🌸 تجربة تصنيف الزهور وتحليل التأثير متاحة الآن! 🚀
         </marquee>
     </header>
 
@@ -22,7 +22,7 @@
             <li><a href="#classification">إدخال البيانات</a></li>
             <li><a href="#analysis-selection">إعداد التحليل</a></li>
             <li><a href="#execution-method">طريقة التنفيذ</a></li>
-            <li><a href="#analysis">نتائج التحليل</a></li>
+            <li><a href="#flower-classification">تصنيف الزهور</a></li>
             <li><a href="#barcode">تحويل إلى باركود محمي</a></li>
             <li><a href="#store">المتجر</a></li>
             <li><a href="#developer-access">تجربة المطور</a></li>
@@ -35,54 +35,10 @@
         <p>يهدف المشروع إلى تحسين جودة المحاصيل وتحليل النكهات باستخدام الذكاء الاصطناعي.</p>
     </section>
 
-    <section id="classification">
-        <h2>إدخال البيانات للتحليل</h2>
-        <form>
-            <label for="image-upload">تحميل صورة:</label>
-            <input type="file" id="image-upload" accept="image/*"><br><br>
-
-            <label for="video-upload">تحميل فيديو:</label>
-            <input type="file" id="video-upload" accept="video/*"><br><br>
-
-            <label for="text-description">إدخال نصي:</label>
-            <textarea id="text-description" placeholder="أدخل وصف المنتج أو التحليل المطلوب"></textarea><br><br>
-
-            <button type="button" onclick="analyzeData()">تحليل البيانات</button>
-        </form>
-    </section>
-
-    <section id="analysis-selection">
-        <h2>إعداد التحليل المتقدم</h2>
-        <form>
-            <label for="model-selection">اختر النموذج المناسب:</label>
-            <select id="model-selection">
-                <option value="flower-classification">تصنيف الزهور</option>
-                <option value="food-quality">تحليل جودة الأغذية</option>
-                <option value="flavor-analysis">تحليل النكهات</option>
-            </select><br><br>
-
-            <button type="button" onclick="startAnalysis()">بدء التحليل</button>
-        </form>
-    </section>
-
-    <section id="execution-method">
-        <h2>طريقة تنفيذ النموذج</h2>
-        <form>
-            <label for="execution-selection">اختر طريقة التنفيذ:</label>
-            <select id="execution-selection">
-                <option value="gpu-high-accuracy">GPU - دقة عالية</option>
-                <option value="cpu-balanced">CPU - متوازن</option>
-                <option value="system-32">نظام 32 - أكثر دقة</option>
-                <option value="system-64">نظام 64 - أسرع أداء</option>
-            </select><br><br>
-        </form>
-    </section>
-
-    <section id="analysis">
-        <h2>نتائج التحليل</h2>
-        <div id="results-container">
-            <p>لم يتم تحليل أي بيانات بعد...</p>
-        </div>
+    <section id="flower-classification">
+        <h2>تصنيف الزهور وتحليل التأثير</h2>
+        <p>🔬 استخدم الذكاء الاصطناعي لتصنيف الزهور وتحليل تأثيرها البيئي والجمالي.</p>
+        <button onclick="navigateToFlowerPage()">🌸 انتقل إلى مصنف الزهور</button>
     </section>
 
     <section id="barcode">
@@ -96,17 +52,8 @@
     </footer>
 
     <script>
-        function analyzeData() {
-            document.getElementById("results-container").innerHTML = "<p>جاري تحليل البيانات باستخدام الذكاء الاصطناعي...</p>";
-        }
-
-        function startAnalysis() {
-            let model = document.getElementById("model-selection").value;
-            let execution = document.getElementById("execution-selection").value;
-
-            document.getElementById("results-container").innerHTML = 
-                `<p>تم تحديد النموذج <strong>${model}</strong> باستخدام طريقة التنفيذ <strong>${execution}</strong>.</p>
-                 <p>🔍 جاري تشغيل التحليل...</p>`;
+        function navigateToFlowerPage() {
+            window.location.href = "flower_classification.html";
         }
 
         function generateBarcode() {
