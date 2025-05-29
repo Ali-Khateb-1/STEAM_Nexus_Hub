@@ -1,0 +1,73 @@
+/* ضبط الخلفية والخطوط العامة */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* تحسين شكل العنوان الرئيسي */
+header {
+    background-color: #0077b6;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* تنسيق شريط التنقل */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #023047;
+}
+
+nav ul li {
+    padding: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+/* تحسين عرض الأقسام */
+section {
+    padding: 20px;
+    background: white;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* تحسين شكل الأزرار */
+button {
+    background-color: #0077b6;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #023047;
+}
+
+/* تنسيق الصور */
+.gallery img {
+    width: 150px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+/* تحسين شكل الفوتر */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #023047;
+    color: white;
+}
