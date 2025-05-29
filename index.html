@@ -12,7 +12,7 @@
         <h1>مشروع Smart Flavor Farm</h1>
         <p>منصة ذكاء اصطناعي لتحليل الغذاء وتحسين تجربة المستخدم</p>
         <marquee behavior="scroll" direction="right">
-            ⚠️ إعلان هام: تحديث جديد لنتائج تحليل الذكاء الاصطناعي! 🌟
+            ⚠️ تحديث هام: جرب تحليل المحتوى وتحويله إلى باركود فريد! 🌟
         </marquee>
     </header>
 
@@ -22,6 +22,7 @@
             <li><a href="#classification">إدخال البيانات</a></li>
             <li><a href="#analysis-selection">إعداد التحليل</a></li>
             <li><a href="#analysis">نتائج التحليل</a></li>
+            <li><a href="#barcode">تحويل إلى باركود</a></li>
             <li><a href="#store">المتجر</a></li>
             <li><a href="#developer-access">تجربة المطور</a></li>
             <li><a href="#contact">تواصل معنا</a></li>
@@ -85,18 +86,10 @@
         </div>
     </section>
 
-    <section id="store">
-        <h2>المتجر الإلكتروني</h2>
-        <p>⚠️ عذرًا، هذه الصفحة غير متاحة حاليًا. <br> 😕 تحقق من التحديثات القادمة قريبًا!</p>
-        <img src="images/error_image.jpg" alt="خطأ في المتجر">
-    </section>
-
-    <section id="developer-access">
-        <h2>تجربة المطور</h2>
-        <p>هذا القسم مخصص للمطورين فقط. يرجى إدخال رمز الوصول:</p>
-        <input type="password" id="developer-code" placeholder="أدخل الرمز">
-        <button onclick="validateDeveloperAccess()">إرسال</button>
-        <p id="developer-message"></p>
+    <section id="barcode">
+        <h2>تحويل المحتوى إلى باركود</h2>
+        <button onclick="generateBarcode()">🔗 إنشاء باركود</button>
+        <div id="barcode-container"></div>
     </section>
 
     <footer>
@@ -118,11 +111,9 @@
                  <p>🔍 جاري تشغيل التحليل...</p>`;
         }
 
-        function validateDeveloperAccess() {
-            let code = document.getElementById("developer-code").value;
-            document.getElementById("developer-message").innerText = (code === "5678") ? 
-                "تم التحقق! لديك وصول إلى بيئة المطورين." : 
-                "رمز خاطئ، يرجى المحاولة مرة أخرى.";
+        function generateBarcode() {
+            document.getElementById("barcode-container").innerHTML = 
+                "<p>📌 تم إنشاء الباركود! يمكنك حفظه أو مسحه ضوئيًا للحصول على المعلومات.</p>";
         }
     </script>
 
