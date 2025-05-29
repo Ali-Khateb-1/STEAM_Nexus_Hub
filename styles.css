@@ -13,17 +13,11 @@ header {
     padding: 20px;
 }
 
-marquee {
-    background-color: #5a3d2b;
-    color: white;
-    padding: 10px;
-    font-weight: bold;
-}
-
 nav ul {
     list-style: none;
     padding: 0;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     background-color: #5a3d2b;
 }
@@ -57,8 +51,21 @@ button:hover {
     background-color: #3e2820;
 }
 
-#results-container, #barcode-container {
+#barcode-container {
     padding: 20px;
     background: #1a1a1a;
     border-radius: 8px;
+}
+
+/* تحسين عرض الهاتف */
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    section {
+        width: 90%;
+        margin: 10px auto;
+    }
 }
