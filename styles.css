@@ -1,15 +1,15 @@
-/* ضبط الخلفية والخطوط العامة */
+/* تعيين الخلفية والخطوط */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: black; /* الخلفية باللون الأسود */
+    color: #fff; /* لون النص أبيض */
     margin: 0;
     padding: 0;
 }
 
-/* تحسين شكل العنوان الرئيسي */
+/* تنسيق العنوان الرئيسي */
 header {
-    background-color: #0077b6;
+    background-color: #7b1f1f; /* النبيذي */
     color: white;
     text-align: center;
     padding: 20px;
@@ -21,7 +21,7 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    background-color: #023047;
+    background-color: #7b1f1f; /* النبيذي */
 }
 
 nav ul li {
@@ -34,18 +34,18 @@ nav ul li a {
     padding: 10px;
 }
 
-/* تحسين عرض الأقسام */
+/* تنسيق الأقسام */
 section {
     padding: 20px;
-    background: white;
+    background: #1a1a1a; /* خلفية داكنة */
     margin: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-/* تحسين شكل الأزرار */
+/* تحسين الأزرار */
 button {
-    background-color: #0077b6;
+    background-color: #7b1f1f; /* النبيذي */
     color: white;
     padding: 10px 15px;
     border: none;
@@ -54,20 +54,21 @@ button {
 }
 
 button:hover {
-    background-color: #023047;
+    background-color: #4b0d0d; /* لون أكثر قتامة عند التحويم */
 }
 
-/* تنسيق الصور */
-.gallery img {
-    width: 150px;
+/* تنسيق الصور والفيديو */
+.gallery img, video {
+    width: 200px;
     margin: 10px;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
 }
 
-/* تحسين شكل الفوتر */
+/* تحسين شكل التذييل */
 footer {
     text-align: center;
     padding: 15px;
-    background-color: #023047;
+    background-color: #7b1f1f; /* النبيذي */
     color: white;
 }
