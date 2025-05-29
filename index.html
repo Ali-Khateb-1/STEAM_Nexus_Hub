@@ -20,6 +20,7 @@
         <ul>
             <li><a href="#overview">نظرة عامة</a></li>
             <li><a href="#classification">إدخال البيانات</a></li>
+            <li><a href="#analysis-selection">إعداد التحليل</a></li>
             <li><a href="#analysis">نتائج التحليل</a></li>
             <li><a href="#store">المتجر</a></li>
             <li><a href="#developer-access">تجربة المطور</a></li>
@@ -48,9 +49,38 @@
         </form>
     </section>
 
+    <section id="analysis-selection">
+        <h2>إعداد التحليل المتقدم</h2>
+        <form>
+            <label for="project-selection">اختر المشروع:</label>
+            <select id="project-selection">
+                <option value="agriculture">تحليل المحاصيل الزراعية</option>
+                <option value="food-quality">تحليل جودة الأغذية</option>
+                <option value="flavor-analysis">تحليل النكهات</option>
+            </select><br><br>
+
+            <label for="media-selection">حدد نوع الوسائط المدخلة:</label>
+            <select id="media-selection">
+                <option value="image">صور</option>
+                <option value="video">فيديو</option>
+                <option value="text">نصوص ووصف</option>
+            </select><br><br>
+
+            <label for="model-selection">اختر النموذج المناسب:</label>
+            <select id="model-selection">
+                <option value="gpu-high-accuracy">GPU - دقة عالية</option>
+                <option value="cpu-balanced">CPU - متوازن بين الدقة والسرعة</option>
+                <option value="system-36">نظام 36 - أسرع أداء</option>
+                <option value="system-64">نظام 64 - دقة أكثر تطورًا</option>
+            </select><br><br>
+
+            <button type="button" onclick="startAnalysis()">بدء التحليل</button>
+        </form>
+    </section>
+
     <section id="analysis">
         <h2>نتائج التحليل</h2>
-        <div id="analysis-results">
+        <div id="results-container">
             <p>لم يتم تحليل أي بيانات بعد...</p>
         </div>
     </section>
@@ -75,16 +105,24 @@
 
     <script>
         function analyzeData() {
-            document.getElementById("analysis-results").innerHTML = "<p>جاري تحليل البيانات باستخدام الذكاء الاصطناعي...</p>";
+            document.getElementById("results-container").innerHTML = "<p>جاري تحليل البيانات باستخدام الذكاء الاصطناعي...</p>";
+        }
+
+        function startAnalysis() {
+            let project = document.getElementById("project-selection").value;
+            let media = document.getElementById("media-selection").value;
+            let model = document.getElementById("model-selection").value;
+
+            document.getElementById("results-container").innerHTML = 
+                `<p>تم تحديد <strong>${project}</strong> باستخدام <strong>${media}</strong> مع نموذج <strong>${model}</strong>.</p>
+                 <p>🔍 جاري تشغيل التحليل...</p>`;
         }
 
         function validateDeveloperAccess() {
             let code = document.getElementById("developer-code").value;
-            if (code === "5678") {
-                document.getElementById("developer-message").innerText = "تم التحقق! لديك وصول إلى بيئة المطورين.";
-            } else {
-                document.getElementById("developer-message").innerText = "رمز خاطئ، يرجى المحاولة مرة أخرى.";
-            }
+            document.getElementById("developer-message").innerText = (code === "5678") ? 
+                "تم التحقق! لديك وصول إلى بيئة المطورين." : 
+                "رمز خاطئ، يرجى المحاولة مرة أخرى.";
         }
     </script>
 
