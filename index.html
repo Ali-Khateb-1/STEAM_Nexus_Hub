@@ -20,7 +20,6 @@
         <ul>
             <li><a href="#overview">نظرة عامة</a></li>
             <li><a href="#classification">إدخال البيانات</a></li>
-            <li><a href="#analysis-selection">إعداد التحليل</a></li>
             <li><a href="#execution-method">طريقة التنفيذ</a></li>
             <li><a href="flower_classification.html">🌸 مصنف الزهور</a></li>
             <li><a href="#barcode">تحويل إلى باركود محمي</a></li>
@@ -38,17 +37,30 @@
     <section id="classification">
         <h2>إدخال البيانات للتحليل</h2>
         <form>
-            <label for="image-upload">تحميل صورة:</label>
-            <input type="file" id="image-upload" accept="image/*" onchange="previewImage()">
-            <img id="image-preview" style="max-width: 300px; display: none;"><br><br>
+            <label>اختر نوع التحليل:</label><br>
+            <input type="checkbox" id="use-image" onchange="toggleInput()"> صورة  
+            <input type="checkbox" id="use-video" onchange="toggleInput()"> فيديو  
+            <input type="checkbox" id="use-text" onchange="toggleInput()"> نصي  
+            <br><br>
 
-            <label for="video-upload">تحميل فيديو:</label>
-            <input type="file" id="video-upload" accept="video/*" onchange="previewVideo()">
-            <video id="video-preview" controls style="max-width: 300px; display: none;"></video><br><br>
+            <div id="image-section" style="display: none;">
+                <label for="image-upload">تحميل صورة:</label>
+                <input type="file" id="image-upload" accept="image/*" onchange="previewImage()">
+                <img id="image-preview" style="max-width: 300px; display: none;">
+            </div>
 
-            <label for="text-description">إدخال نصي:</label>
-            <textarea id="text-description" placeholder="أدخل وصف المنتج أو التحليل المطلوب"></textarea><br><br>
+            <div id="video-section" style="display: none;">
+                <label for="video-upload">تحميل فيديو:</label>
+                <input type="file" id="video-upload" accept="video/*" onchange="previewVideo()">
+                <video id="video-preview" controls style="max-width: 300px; display: none;"></video>
+            </div>
 
+            <div id="text-section" style="display: none;">
+                <label for="text-description">إدخال نصي:</label>
+                <textarea id="text-description" placeholder="أدخل وصف المنتج أو التحليل المطلوب"></textarea>
+            </div>
+
+            <br>
             <button type="button" onclick="analyzeData()">تحليل البيانات</button>
         </form>
     </section>
@@ -62,7 +74,7 @@
                 <option value="cpu-balanced">CPU - متوازن</option>
                 <option value="system-32">نظام 32 - أكثر دقة</option>
                 <option value="system-64">نظام 64 - أسرع أداء</option>
-            </select><br><br>
+            </select>
         </form>
     </section>
 
@@ -77,6 +89,12 @@
     </footer>
 
     <script>
+        function toggleInput() {
+            document.getElementById("image-section").style.display = document.getElementById("use-image").checked ? "block" : "none";
+            document.getElementById("video-section").style.display = document.getElementById("use-video").checked ? "block" : "none";
+            document.getElementById("text-section").style.display = document.getElementById("use-text").checked ? "block" : "none";
+        }
+
         function previewImage() {
             const input = document.getElementById("image-upload");
             const preview = document.getElementById("image-preview");
@@ -106,7 +124,12 @@
         }
 
         function analyzeData() {
-            document.getElementById("barcode-container").innerHTML = "<p>جاري تحليل البيانات باستخدام الذكاء الاصطناعي...</p>";
+            let selectedInputs = "";
+            if (document.getElementById("use-image").checked) selectedInputs += "🖼️ صورة ";
+            if (document.getElementById("use-video").checked) selectedInputs += "🎥 فيديو ";
+            if (document.getElementById("use-text").checked) selectedInputs += "📝 نصي ";
+            
+            document.getElementById("barcode-container").innerHTML = "<p>🔍 يتم تحليل البيانات بناءً على: " + selectedInputs + "</p>";
         }
 
         function generateBarcode() {
