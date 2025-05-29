@@ -3,137 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Flavor Farm - الصفحة الرئيسية</title>
+    <title>لوحة التحكم - Smart Flavor Farm</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <header>
-        <h1>مشروع Smart Flavor Farm</h1>
-        <p>منصة ذكاء اصطناعي لتحليل الطعام وتصنيف الزهور</p>
-        <marquee behavior="scroll" direction="right">
-            🌸 تجربة تصنيف الزهور وتحليل التأثير متاحة الآن! 🚀
-        </marquee>
+        <h1>لوحة التحكم الرئيسية</h1>
+        <p>نقطة الربط لكل المشاريع والملفات داخل حساب GitHub</p>
     </header>
 
     <nav>
         <ul>
-            <li><a href="#overview">نظرة عامة</a></li>
-            <li><a href="#classification">إدخال البيانات</a></li>
-            <li><a href="#execution-method">طريقة التنفيذ</a></li>
-            <li><a href="flower_classification.html">🌸 مصنف الزهور</a></li>
-            <li><a href="#barcode">تحويل إلى باركود محمي</a></li>
-            <li><a href="store.html">🛍️ المتجر</a></li>
-            <li><a href="contact.html">📩 اتصل بنا</a></li>
-            <li><a href="notes.html">📝 الملاحظات</a></li>
+            <li><a href="main-project/">🔗 المشروع الرئيسي</a></li>
+            <li><a href="sub-project-1/">📂 مستودع فرعي 1</a></li>
+            <li><a href="sub-project-2/">📂 مستودع فرعي 2</a></li>
+            <li><a href="analytics.html">📊 إحصائيات المستودعات</a></li>
+            <li><a href="updates.html">🔄 آخر التحديثات</a></li>
         </ul>
     </nav>
 
     <section id="overview">
-        <h2>نظرة عامة على المشروع</h2>
-        <p>يهدف المشروع إلى تحسين جودة المحاصيل وتصنيف الزهور باستخدام الذكاء الاصطناعي.</p>
+        <h2>نظرة عامة</h2>
+        <p>هذه الصفحة تربط كل المشاريع الفرعية والملفات داخل المستودع الرئيسي، مما يسهل إدارة البيانات والتنقل بينها.</p>
     </section>
 
-    <section id="classification">
-        <h2>إدخال البيانات للتحليل</h2>
-        <form>
-            <label>اختر نوع التحليل:</label><br>
-            <input type="checkbox" id="use-image" onchange="toggleInput()"> صورة  
-            <input type="checkbox" id="use-video" onchange="toggleInput()"> فيديو  
-            <input type="checkbox" id="use-text" onchange="toggleInput()"> نصي  
-            <br><br>
-
-            <div id="image-section" style="display: none;">
-                <label for="image-upload">تحميل صورة:</label>
-                <input type="file" id="image-upload" accept="image/*" onchange="previewImage()">
-                <img id="image-preview" style="max-width: 300px; display: none;">
-            </div>
-
-            <div id="video-section" style="display: none;">
-                <label for="video-upload">تحميل فيديو:</label>
-                <input type="file" id="video-upload" accept="video/*" onchange="previewVideo()">
-                <video id="video-preview" controls style="max-width: 300px; display: none;"></video>
-            </div>
-
-            <div id="text-section" style="display: none;">
-                <label for="text-description">إدخال نصي:</label>
-                <textarea id="text-description" placeholder="أدخل وصف المنتج أو التحليل المطلوب"></textarea>
-            </div>
-
-            <br>
-            <button type="button" onclick="analyzeData()">تحليل البيانات</button>
-        </form>
+    <section id="status">
+        <h2>🔍 حالة المستودع</h2>
+        <div id="repo-status">
+            <p>✅ جميع المشاريع متصلة. لا توجد أخطاء في GitHub Actions.</p>
+        </div>
     </section>
 
-    <section id="execution-method">
-        <h2>طريقة تنفيذ النموذج</h2>
-        <form>
-            <label for="execution-selection">اختر طريقة التنفيذ:</label>
-            <select id="execution-selection">
-                <option value="gpu-high-accuracy">GPU - دقة عالية</option>
-                <option value="cpu-balanced">CPU - متوازن</option>
-                <option value="system-32">نظام 32 - أكثر دقة</option>
-                <option value="system-64">نظام 64 - أسرع أداء</option>
-            </select>
-        </form>
-    </section>
-
-    <section id="barcode">
-        <h2>تحويل المحتوى إلى باركود محمي</h2>
-        <button onclick="generateBarcode()">🔗 إنشاء باركود</button>
-        <div id="barcode-container"></div>
+    <section id="control-panel">
+        <h2>⚙️ إدارة المشاريع</h2>
+        <button onclick="syncProjects()">🛠️ تحديث المستودعات</button>
+        <button onclick="backupData()">💾 إنشاء نسخة احتياطية</button>
+        <button onclick="optimizePerformance()">🚀 تحسين الأداء</button>
     </section>
 
     <footer>
-        <p>&copy; 2025 مشروع Smart Flavor Farm - جميع الحقوق محفوظة</p>
+        <p>&copy; 2025 مركز التحكم في Smart Flavor Farm - جميع الحقوق محفوظة</p>
     </footer>
 
     <script>
-        function toggleInput() {
-            document.getElementById("image-section").style.display = document.getElementById("use-image").checked ? "block" : "none";
-            document.getElementById("video-section").style.display = document.getElementById("use-video").checked ? "block" : "none";
-            document.getElementById("text-section").style.display = document.getElementById("use-text").checked ? "block" : "none";
+        function syncProjects() {
+            document.getElementById("repo-status").innerHTML = "<p>🔄 جاري مزامنة المستودعات...</p>";
         }
 
-        function previewImage() {
-            const input = document.getElementById("image-upload");
-            const preview = document.getElementById("image-preview");
-            
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = "block";
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
+        function backupData() {
+            document.getElementById("repo-status").innerHTML = "<p>💾 تم إنشاء نسخة احتياطية لجميع المشاريع!</p>";
         }
 
-        function previewVideo() {
-            const input = document.getElementById("video-upload");
-            const preview = document.getElementById("video-preview");
-            
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = "block";
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        function analyzeData() {
-            let selectedInputs = "";
-            if (document.getElementById("use-image").checked) selectedInputs += "🖼️ صورة ";
-            if (document.getElementById("use-video").checked) selectedInputs += "🎥 فيديو ";
-            if (document.getElementById("use-text").checked) selectedInputs += "📝 نصي ";
-            
-            document.getElementById("barcode-container").innerHTML = "<p>🔍 يتم تحليل البيانات بناءً على: " + selectedInputs + "</p>";
-        }
-
-        function generateBarcode() {
-            document.getElementById("barcode-container").innerHTML = "<p>📌 تم إنشاء الباركود المحمي! يمكنك حفظه أو مسحه ضوئيًا للحصول على المعلومات.</p>";
+        function optimizePerformance() {
+            document.getElementById("repo-status").innerHTML = "<p>🚀 تم تحسين أداء المستودع بنجاح!</p>";
         }
     </script>
 
