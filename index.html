@@ -20,7 +20,7 @@
             <li><a href="#ai_models">نماذج الذكاء الاصطناعي</a></li>
             <li><a href="#impact">تحليل التأثير</a></li>
             <li><a href="#media">وسائط المشروع</a></li>
-            <li><a href="#interaction">التفاعل والتحليل</a></li>
+            <li><a href="#contact">تواصل معنا</a></li>
         </ul>
     </nav>
 
@@ -36,34 +36,17 @@
             <img src="images/fruit_sample.jpg" alt="فواكه">
             <img src="images/pizza_sample.jpg" alt="بيتزا">
         </div>
-        <input type="file" id="imageUpload" accept="image/*">
         <button onclick="analyzeImages()">تحليل الصور</button>
     </section>
 
-    <section id="ai_models">
-        <h2>نماذج الذكاء الاصطناعي</h2>
-        <p>تستخدم النماذج الذكية مثل `models.N_7` في تحليل وتصنيف المنتجات الغذائية بدقة عالية.</p>
-        <button onclick="downloadModel()">تحميل النموذج</button>
-    </section>
-
-    <section id="impact">
-        <h2>تحليل التأثير</h2>
-        <p>يتم تقييم استراتيجيات التسويق عبر `Impact Metrics Studio` لتحليل الأداء وتعزيز الفاعلية.</p>
-        <button onclick="viewImpactData()">عرض البيانات</button>
-    </section>
-
-    <section id="media">
-        <h2>وسائط المشروع</h2>
-        <input type="file" id="videoUpload" accept="video/*">
-        <button onclick="uploadVideo()">إضافة فيديو</button>
-        <button onclick="navigateToGallery()">عرض الوسائط</button>
-    </section>
-
-    <section id="interaction">
-        <h2>التفاعل والتحليل</h2>
-        <p>استخدم الذكاء الاصطناعي لتقديم تحليلات ديناميكية حول بيانات المشروع.</p>
-        <textarea id="userInput" placeholder="أدخل استفسارك هنا..."></textarea>
-        <button onclick="processUserQuery()">تحليل الاستفسار</button>
+    <section id="contact">
+        <h2>تواصل معنا</h2>
+        <p>تابعنا على وسائل التواصل الاجتماعي:</p>
+        <ul>
+            <li><a href="https://twitter.com" target="_blank">تويتر</a></li>
+            <li><a href="https://facebook.com" target="_blank">فيسبوك</a></li>
+            <li><a href="https://linkedin.com" target="_blank">لينكدإن</a></li>
+        </ul>
     </section>
 
     <footer>
@@ -72,42 +55,7 @@
 
     <script>
         function analyzeImages() {
-            let uploadedImage = document.getElementById("imageUpload").files[0];
-            if (uploadedImage) {
-                alert("جاري تحليل الصورة باستخدام النموذج الذكي...");
-            } else {
-                alert("يرجى تحميل صورة أولاً!");
-            }
-        }
-
-        function downloadModel() {
-            alert("يتم الآن تحميل نموذج الذكاء الاصطناعي...");
-        }
-
-        function viewImpactData() {
-            alert("عرض بيانات تأثير التسويق...");
-        }
-
-        function uploadVideo() {
-            let uploadedVideo = document.getElementById("videoUpload").files[0];
-            if (uploadedVideo) {
-                alert("تم تحميل الفيديو بنجاح!");
-            } else {
-                alert("يرجى تحديد ملف فيديو أولا!");
-            }
-        }
-
-        function navigateToGallery() {
-            window.location.href = "media.html";
-        }
-
-        function processUserQuery() {
-            let query = document.getElementById("userInput").value;
-            if (query.trim() !== "") {
-                alert("تحليل الاستفسار: " + query);
-            } else {
-                alert("يرجى إدخال استفسار أولاً!");
-            }
+            alert("جاري تحليل الصور باستخدام النموذج الذكي...");
         }
     </script>
 
