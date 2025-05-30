@@ -1,3 +1,6 @@
 [submodule "Classification_of_flower_structure_TM1"]
 	path = Classification_of_flower_structure_TM1
 	url = https://github.com/Ali-Khateb-1/Classification_of_flower_structure_TM1.git
+[submodule "my-online-store"]
+	path = my-online-store
+	url = https://github.com/Ali-Khateb-1/my-online-store

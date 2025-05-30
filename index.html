@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -9,39 +10,34 @@
 <body>
 
     <header>
-        <h1>🚀 مشاريع الابتكار الصناعي والذكاء الاصطناعي - علي الخطيب</h1>
-        <p>الابتكار والتكنولوجيا لتحقيق مستقبل أكثر استدامة وذكاءً.</p>
+        <h1>مشاريع الابتكار الصناعي والذكاء الاصطناعي - علي الخطيب</h1>
+        <p>الابتكار والتكنولوجيا لتحقيق مستقبل أكثر استدامة وذكاءً</p>
     </header>
 
-    <section id="barcode-experience">
-        <h2>🔗 تجربة الباركود</h2>
-        <p>يمكنك إنشاء باركود مخصص لهذه الصفحة وتجربة التحليل الذكي للمحتوى!</p>
-        <button onclick="generateBarcode()">🔗 إنشاء باركود جديد</button>
-        <div id="barcode-container"></div>
-    </section>
-
     <section id="user-choice">
-        <h2>⚡ اختر طريقة الاستخدام</h2>
-        <button onclick="redirectUser('user')">👤 الدخول كمستخدم</button>
-        <button onclick="redirectUser('developer')">🛠️ الدخول كمطور</button>
+        <h2>اختر طريقة الاستخدام</h2>
+        <button onclick="redirectUser('classification')">الدخول إلى تصنيف النباتات</button>
+        <button onclick="redirectUser('plant_recognition')">الدخول إلى تحليل بنية النباتات</button>
+        <button onclick="redirectUser('developer')">الدخول كمطور</button>
     </section>
 
     <nav>
         <ul>
-            <li><a href="dashboard.html">⚙️ لوحة الإدارة</a></li>
-            <li><a href="updates.html">🔄 آخر التحديثات</a></li>
-            <li><a href="projects.html">📂 المشاريع الفرعية</a></li>
+            <li><a href="Classification_of_flower_structure_TM1/index.html">تصنيف بنية الزهور</a></li>
+            <li><a href="Plant_Recognition_Lab/index.html">تحليل النباتات بالتعلم العميق</a></li>
+            <li><a href="dashboard.html">لوحة التحكم</a></li>
+            <li><a href="updates.html">آخر التحديثات</a></li>
         </ul>
     </nav>
 
     <section id="contact">
-        <h2>📞 اتصل بنا</h2>
+        <h2>اتصل بنا</h2>
         <div class="social-links">
             <a href="https://www.linkedin.com/in/ali-khateeb">LinkedIn</a>
             <a href="https://github.com/Ali-Khateeb">GitHub</a>
         </div>
-        <p>📧 البريد الإلكتروني: ali_alkhateeb91@hotmail.com</p>
-        <p>📞 الهاتف: +970 568033662</p>
+        <p>البريد الإلكتروني: ali_alkhateeb91@hotmail.com</p>
+        <p>الهاتف: +970 568033662</p>
     </section>
 
     <footer>
@@ -50,15 +46,13 @@
 
     <script>
         function redirectUser(role) {
-            if (role === 'user') {
-                window.location.href = "user-dashboard.html";
+            if (role == "classification") {
+                window.location.href = "Classification_of_flower_structure_TM1/index.html";
+            } elif (role == "plant_recognition") {
+                window.location.href = "Plant_Recognition_Lab/index.html";
             } else {
                 window.location.href = "developer-dashboard.html";
             }
-        }
-
-        function generateBarcode() {
-            document.getElementById("barcode-container").innerHTML = "<p>📌 تم إنشاء باركود مخصص لهذه الصفحة! يمكنك حفظه أو مسحه ضوئيًا.</p>";
         }
     </script>
 
