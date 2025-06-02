@@ -1,9 +1,0 @@
-# متطلبات تشغيل الموقع داخل WSL
-xdg-utils  # مثبت بالفعل على النظام (1.1.3-4.1ubuntu3)
-
-# مكتبات تشغيل النماذج الذكية على الهاتف
-torch
-torchvision
-torchaudio
-tensorflow
-tensorflow-lite
