@@ -3,103 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚀 مركز STEAM Nexus</title>
+    <title>📂 نظام القوائم الديناميكي</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; }
+        #sidebar { width: 250px; padding: 20px; background: #f8f8f8; }
+        #main-content { flex: 1; padding: 20px; }
+        .folder { cursor: pointer; font-weight: bold; margin: 10px 0; }
+        .sub-menu { display: none; padding-left: 20px; }
+        .folder.open .sub-menu { display: block; }
+    </style>
 </head>
 <body>
 
-    <header>
-        <h1>🚀 مركز الابتكار الصناعي والذكاء الاصطناعي</h1>
-        <p>تمكين الحلول الذكية من خلال التكنولوجيا الحديثة.</p>
-    </header>
+    <div id="sidebar">
+        <h2>📂 المجلدات الرئيسية</h2>
+        <ul id="folder-list"></ul>
+    </div>
 
-    <nav>
-        <h2>🔗 تنقل سريع بين المشاريع</h2>
-        <ul>
-            <li><a href="index.html">🏠 الصفحة الرئيسية</a></li>
-            <li><a href="STEAM_Nexus_Hub/index.html">🔬 مركز التحكم الرئيسي</a></li>
-            <li><a href="STEAM_Nexus_Switchers_Lab/index.html">🛠️ مختبر التقنيات الذكية</a></li>
-            <li><a href="STEAM-Forge/index.html">🛠️ منصة تطوير المشاريع</a></li>
-            <li><a href="STEAM_Data_Manager/index.html">📊 مدير البيانات الذكية</a></li>
-            <li><a href="dashboard.html">⚙️ لوحة التحكم</a></li>
-            <li><a href="updates.html">📢 أحدث التحديثات</a></li>
-        </ul>
-
-        <h3>📁 الصفحات المدرجة تلقائيًا</h3>
+    <div id="main-content">
+        <h2>📄 الصفحات المتاحة</h2>
         <ul id="pages-list"></ul>
-
-        <!-- قائمة الصفحات المُسجلة تلقائيًا -->
-        <!-- يتم تحديثها عبر GitHub Actions -->
-        <!-- أمثلة للصفحات التي سيتم إدراجها -->
-        <!-- 
-        Prototype_Pages/developer_access.html
-        Prototype_Pages/example_page.html
-        STEAM-Forge/advanced-tools/tool1.html
-        STEAM-Forge/advanced-tools/tool2.html
-        -->
-    </nav>
-
-    <section id="login">
-        <h2>🔑 تسجيل الدخول إلى بيئة العمل</h2>
-        <form action="/login" method="post">
-            <div>
-                <label for="username">اسم المستخدم:</label>
-                <input type="text" id="username" name="username">
-            </div>
-            <div>
-                <label for="password">كلمة المرور:</label>
-                <input type="password" id="password" name="password">
-            </div>
-            <button type="submit">تسجيل الدخول</button>
-        </form>
-        <p><a href="/reset_password">🔄 هل نسيت كلمة المرور؟</a></p>
-        <p><a href="/signup">📝 تسجيل جديد</a></p>
-    </section>
-
-    <footer>
-        <h2>📞 تواصل معنا</h2>
-        <div class="contact-links">
-            <a href="https://www.linkedin.com/in/ali-khateeb-steam-ai-data-education-tech" target="_blank">LinkedIn</a>
-            <a href="https://github.com/Ali-Khateb-1" target="_blank">GitHub</a>
-            <a href="https://www.youtube.com/@Switchers_Gate" target="_blank">YouTube Channel</a>
-        </div>
-        <p>📧 البريد الإلكتروني: <a href="mailto:eng.ali.khateb@gmail.com">eng.ali.khateb@gmail.com</a></p>
-        <p>📞 الهاتف: <a href="tel:+97056033662">+970 56033662</a></p>
-        <p>📱 WhatsApp: <a href="https://wa.me/97056033662" target="_blank">راسلنا على واتساب</a></p>
-    </footer>
+    </div>
 
     <script>
         let repoUrl = "https://api.github.com/repos/Ali-Khateb-1/STEAM_Nexus_Hub/contents/";
-        let listContainer = document.getElementById("pages-list");
 
-        async function fetchPages(folder = "") {
+        async function fetchStructure(folder = "", parentElement = document.getElementById("folder-list")) {
             let response = await fetch(repoUrl + folder);
             let data = await response.json();
 
-            let pagesRecorded = [];
-            
             data.forEach(item => {
-                if (item.type === "file" && item.name.endsWith(".html")) {
-                    let listItem = document.createElement("li");
+                if (item.type === "dir") {
+                    let folderItem = document.createElement("li");
+                    folderItem.textContent = "📂 " + item.name;
+                    folderItem.classList.add("folder");
+
+                    let subMenu = document.createElement("ul");
+                    subMenu.classList.add("sub-menu");
+                    folderItem.appendChild(subMenu);
+
+                    folderItem.addEventListener("click", () => {
+                        folderItem.classList.toggle("open");
+                    });
+
+                    parentElement.appendChild(folderItem);
+                    fetchStructure(item.path + "/", subMenu);
+                }
+                else if (item.type === "file" && item.name.endsWith(".html")) {
+                    let pageItem = document.createElement("li");
                     let link = document.createElement("a");
                     link.href = `https://ali-khateb-1.github.io/STEAM_Nexus_Hub/${folder}${item.name}`;
                     link.target = "_blank";
-                    link.textContent = "🔗 " + item.name.replace(".html", "").replace("_", " ");
-                    listItem.appendChild(link);
-                    listContainer.appendChild(listItem);
+                    link.textContent = "🔗 " + item.name.replace(".html", "");
+                    pageItem.appendChild(link);
 
-                    // حفظ الصفحة في السجل الداخلي
-                    pagesRecorded.push(`${folder}${item.name}`);
-                }
-                else if (item.type === "dir") {
-                    fetchPages(item.path + "/");
+                    document.getElementById("pages-list").appendChild(pageItem);
                 }
             });
-
-            console.log("📄 الصفحات المسجلة تلقائيًا:", pagesRecorded);
         }
 
-        fetchPages();
+        fetchStructure();
     </script>
 
 </body>
