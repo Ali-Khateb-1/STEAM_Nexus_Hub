@@ -3,61 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مشاريع الذكاء الصناعي والابتكار - علي الخطيب</title>
+    <title>🚀 مركز STEAM Nexus</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <header>
-        <h1>مشاريع الابتكار الصناعي والذكاء الاصطناعي - علي الخطيب</h1>
-        <p>الابتكار والتكنولوجيا لتحقيق مستقبل أكثر استدامة وذكاءً</p>
+        <h1>🚀 مركز الابتكار الصناعي والذكاء الاصطناعي</h1>
+        <p>تمكين الحلول الذكية من خلال التكنولوجيا الحديثة.</p>
     </header>
 
-    <section id="user-choice">
-        <h2>اختر طريقة الاستخدام</h2>
-        <button onclick="redirectUser('classification')">الدخول إلى تصنيف النباتات</button>
-        <button onclick="redirectUser('plant_recognition')">الدخول إلى تحليل بنية النباتات</button>
-        <button onclick="redirectUser('developer')">الدخول كمطور</button>
-    </section>
-
     <nav>
-        <h2>🔗 تنقل بين المستودعات</h2>
+        <h2>🔗 تنقل سريع بين المشاريع</h2>
         <ul>
-            <li><a href="../../STEAM_Nexus_Hub/index.html">🏠 المستودع الرئيسي</a></li>
-            <li><a href="../index.html">⬆️ المستودع الأعلى</a></li>
-            <li><a href="Prototype_Pages/index.html">📄 الصفحات النموذجية</a></li>
-            <li><a href="STEAM_Data_Manager/index.html">🗂️ إدارة البيانات</a></li>
-            <li><a href="../Neighbor_Repo/index.html">🔗 المستودع المجاور</a></li>
+            <li><a href="STEAM_Nexus_Hub/index.html">🏠 مركز التحكم الرئيسي</a></li>
+            <li><a href="STEAM_Nexus_Switchers_Lab/index.html">🔬 مختبر التقنيات الذكية</a></li>
+            <li><a href="STEAM-Forge/index.html">🛠️ منصة تطوير المشاريع</a></li>
+            <li><a href="STEAM_Data_Manager/index.html">📊 مدير البيانات الذكية</a></li>
             <li><a href="dashboard.html">⚙️ لوحة التحكم</a></li>
-            <li><a href="updates.html">📢 صفحة التحديثات</a></li>
+            <li><a href="updates.html">📢 أحدث التحديثات</a></li>
         </ul>
     </nav>
 
-    <section id="contact">
-        <h2>اتصل بنا</h2>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/ali-khateeb">LinkedIn</a>
-            <a href="https://github.com/Ali-Khateeb">GitHub</a>
-        </div>
-        <p>البريد الإلكتروني: ali_alkhateeb91@hotmail.com</p>
-        <p>الهاتف: +970 568033662</p>
+    <section id="login">
+        <h2>🔑 تسجيل الدخول إلى بيئة العمل</h2>
+        <form action="/login" method="post">
+            <div>
+                <label for="username">اسم المستخدم:</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div>
+                <label for="password">كلمة المرور:</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <button type="submit">تسجيل الدخول</button>
+        </form>
+        <p><a href="/reset_password">🔄 هل نسيت كلمة المرور؟</a></p>
+        <p><a href="/signup">📝 تسجيل جديد</a></p>
     </section>
 
     <footer>
-        <p>&copy; 2025 مركز التحكم في مشاريع الابتكار - جميع الحقوق محفوظة</p>
+        <h2>📞 تواصل معنا</h2>
+        <div class="contact-links">
+            <a href="https://www.linkedin.com/in/ali-khateeb">LinkedIn</a>
+            <a href="https://github.com/Ali-Khateeb">GitHub</a>
+        </div>
+        <p>📧 البريد الإلكتروني: ali_alkhateeb91@hotmail.com</p>
+        <p>📞 الهاتف: +970 568033662</p>
     </footer>
-
-    <script>
-        function redirectUser(role) {
-            if (role === "classification") {
-                window.location.href = "Classification_of_flower_structure_TM1/index.html";
-            } else if (role === "plant_recognition") {
-                window.location.href = "Plant_Recognition_Lab/index.html";
-            } else {
-                window.location.href = "developer-dashboard.html";
-            }
-        }
-    </script>
 
 </body>
 </html>
