@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -22,11 +21,15 @@
     </section>
 
     <nav>
+        <h2>🔗 تنقل بين المستودعات</h2>
         <ul>
-            <li><a href="Classification_of_flower_structure_TM1/index.html">تصنيف بنية الزهور</a></li>
-            <li><a href="Plant_Recognition_Lab/index.html">تحليل النباتات بالتعلم العميق</a></li>
-            <li><a href="dashboard.html">لوحة التحكم</a></li>
-            <li><a href="updates.html">آخر التحديثات</a></li>
+            <li><a href="../../STEAM_Nexus_Hub/index.html">🏠 المستودع الرئيسي</a></li>
+            <li><a href="../index.html">⬆️ المستودع الأعلى</a></li>
+            <li><a href="Prototype_Pages/index.html">📄 الصفحات النموذجية</a></li>
+            <li><a href="STEAM_Data_Manager/index.html">🗂️ إدارة البيانات</a></li>
+            <li><a href="../Neighbor_Repo/index.html">🔗 المستودع المجاور</a></li>
+            <li><a href="dashboard.html">⚙️ لوحة التحكم</a></li>
+            <li><a href="updates.html">📢 صفحة التحديثات</a></li>
         </ul>
     </nav>
 
@@ -46,9 +49,9 @@
 
     <script>
         function redirectUser(role) {
-            if (role == "classification") {
+            if (role === "classification") {
                 window.location.href = "Classification_of_flower_structure_TM1/index.html";
-            } elif (role == "plant_recognition") {
+            } else if (role === "plant_recognition") {
                 window.location.href = "Plant_Recognition_Lab/index.html";
             } else {
                 window.location.href = "developer-dashboard.html";
