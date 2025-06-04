@@ -23,6 +23,9 @@
             <li><a href="dashboard.html">⚙️ لوحة التحكم</a></li>
             <li><a href="updates.html">📢 أحدث التحديثات</a></li>
         </ul>
+
+        <h3>📁 صفحات النموذج التجريبي</h3>
+        <ul id="pages-list"></ul>
     </nav>
 
     <section id="login">
@@ -50,9 +53,26 @@
             <a href="https://www.youtube.com/@Switchers_Gate" target="_blank">YouTube Channel</a>
         </div>
         <p>📧 البريد الإلكتروني: <a href="mailto:eng.ali.khateb@gmail.com">eng.ali.khateb@gmail.com</a></p>
-        <p>📞 الهاتف: <a href="tel:0056033662">0056033662</a></p>
-        <p>📱 WhatsApp: <a href="https://wa.me/56033662" target="_blank">راسلنا على واتساب</a></p>
+        <p>📞 الهاتف: <a href="tel:+97056033662">+970 56033662</a></p>
+        <p>📱 WhatsApp: <a href="https://wa.me/97056033662" target="_blank">راسلنا على واتساب</a></p>
     </footer>
+
+    <script>
+        let baseUrl = "https://ali-khateb-1.github.io/STEAM_Nexus_Hub/Prototype_Pages/";
+        let pages = ["developer_access.html", "example_page.html"]; // يمكن تحديث هذه القائمة تلقائيًا عبر API أو JSON
+
+        let listContainer = document.getElementById("pages-list");
+
+        pages.forEach(page => {
+            let listItem = document.createElement("li");
+            let link = document.createElement("a");
+            link.href = baseUrl + page;
+            link.target = "_blank";
+            link.textContent = "🔗 " + page.replace(".html", "").replace("_", " ");
+            listItem.appendChild(link);
+            listContainer.appendChild(listItem);
+        });
+    </script>
 
 </body>
 </html>
