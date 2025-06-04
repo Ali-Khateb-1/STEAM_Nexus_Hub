@@ -16,15 +16,16 @@
     <nav>
         <h2>🔗 تنقل سريع بين المشاريع</h2>
         <ul>
-            <li><a href="STEAM_Nexus_Hub/index.html">🏠 مركز التحكم الرئيسي</a></li>
-            <li><a href="STEAM_Nexus_Switchers_Lab/index.html">🔬 مختبر التقنيات الذكية</a></li>
+            <li><a href="index.html">🏠 الصفحة الرئيسية</a></li>
+            <li><a href="STEAM_Nexus_Hub/index.html">🔬 مركز التحكم الرئيسي</a></li>
+            <li><a href="STEAM_Nexus_Switchers_Lab/index.html">🛠️ مختبر التقنيات الذكية</a></li>
             <li><a href="STEAM-Forge/index.html">🛠️ منصة تطوير المشاريع</a></li>
             <li><a href="STEAM_Data_Manager/index.html">📊 مدير البيانات الذكية</a></li>
             <li><a href="dashboard.html">⚙️ لوحة التحكم</a></li>
             <li><a href="updates.html">📢 أحدث التحديثات</a></li>
         </ul>
 
-        <h3>📁 صفحات النموذج التجريبي</h3>
+        <h3>📁 الصفحات الأخرى في المستودع</h3>
         <ul id="pages-list"></ul>
     </nav>
 
@@ -58,20 +59,30 @@
     </footer>
 
     <script>
-        let baseUrl = "https://ali-khateb-1.github.io/STEAM_Nexus_Hub/Prototype_Pages/";
-        let pages = ["developer_access.html", "example_page.html"]; // يمكن تحديث هذه القائمة تلقائيًا عبر API أو JSON
-
+        let repoUrl = "https://api.github.com/repos/Ali-Khateb-1/STEAM_Nexus_Hub/contents/";
         let listContainer = document.getElementById("pages-list");
 
-        pages.forEach(page => {
-            let listItem = document.createElement("li");
-            let link = document.createElement("a");
-            link.href = baseUrl + page;
-            link.target = "_blank";
-            link.textContent = "🔗 " + page.replace(".html", "").replace("_", " ");
-            listItem.appendChild(link);
-            listContainer.appendChild(listItem);
-        });
+        async function fetchPages(folder = "") {
+            let response = await fetch(repoUrl + folder);
+            let data = await response.json();
+
+            data.forEach(item => {
+                if (item.type === "file" && item.name.endsWith(".html")) {
+                    let listItem = document.createElement("li");
+                    let link = document.createElement("a");
+                    link.href = `https://ali-khateb-1.github.io/STEAM_Nexus_Hub/${folder}${item.name}`;
+                    link.target = "_blank";
+                    link.textContent = "🔗 " + item.name.replace(".html", "").replace("_", " ");
+                    listItem.appendChild(link);
+                    listContainer.appendChild(listItem);
+                }
+                else if (item.type === "dir") {
+                    fetchPages(item.path + "/");  // استدعاء المجلدات الفرعية
+                }
+            });
+        }
+
+        fetchPages();
     </script>
 
 </body>
