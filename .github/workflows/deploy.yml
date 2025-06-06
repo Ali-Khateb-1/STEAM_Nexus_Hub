@@ -1,0 +1,3 @@
+git add .github/workflows/deploy.yml
+git commit -m "Added deploy.yml for GitHub Actions"
+git push origin main
