@@ -1,0 +1,3 @@
+[submodule "my-online-store"]
+	path = my-online-store
+	url = https://github.com/Ali-Khateb-1/my-online-store.git
