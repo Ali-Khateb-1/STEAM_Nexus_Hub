@@ -1,29 +1,0 @@
- <!DOCTYPE html>
-<html lang="ar">
-<head>
-    <title>تشغيل النموذج</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header><h1>🚀 تشغيل النموذج</h1></header>
-    <section>
-        <h2>اختر النموذج المراد تشغيله:</h2>
-        <select id="modelSelect">
-            <option value="latest">🔬 النموذج الأحدث (TM1.5)</option>
-            <option value="previous">📜 النموذج السابق (TM1.4)</option>
-            <option value="experimental">🧪 نموذج تجريبي جديد</option>
-        </select>
-        <button onclick="runModel()">تشغيل النموذج</button>
-    </section>
-    <nav>
-        <button onclick="location.href='index.html'">🏠 العودة إلى الصفحة الرئيسية</button>
-        <button onclick="location.href='projects.html'">🔍 المشاريع</button>
-    </nav>
-    <script>
-        function runModel() {
-            let model = document.getElementById("modelSelect").value;
-            alert(`🚀 يتم الآن تشغيل النموذج: ${model}`);
-        }
-    </script>
-</body>
-</html>
