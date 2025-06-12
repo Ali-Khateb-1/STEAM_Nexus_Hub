@@ -1,3 +1,8 @@
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 name: Auto Deploy to GitHub Pages
 on:
   push:
