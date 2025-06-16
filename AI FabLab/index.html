@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Project Presentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #111;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .slide {
+            width: 90vw;
+            height: 70vh;
+            padding: 40px;
+            display: none;
+            box-sizing: border-box;
+            text-align: center;
+            border-radius: 10px;
+            transition: all 0.5s ease;
+        }
+        .slide.active {
+            display: block;
+        }
+        .slide:nth-child(odd) {
+            background: #1a1a1a;
+        }
+        .title {
+            font-size: 2.5em;
+            color: #00c0ff;
+        }
+        .content {
+            font-size: 1.2em;
+            max-width: 800px;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        .btn {
+            background-color: #007ACC;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .btn:hover {
+            background-color: #005A8D;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slide active">
+    <div class="title">Project Title</div>
+    <div class="content">AI-powered Digital Twin & Smart Prototyping Platform</div>
+</div>
+
+<div class="slide">
+    <div class="title">Stage</div>
+    <div class="content">Ideation & Early Development — Training models and preparing dynamic interfaces.</div>
+</div>
+
+<div class="slide">
+    <div class="title">Description</div>
+    <div class="content">A platform that helps users turn ideas into smart, sustainable product prototypes through reverse engineering, packaging design, brand building, and 3D file generation.</div>
+</div>
+
+<div class="slide">
+    <div class="title">Target Users</div>
+    <div class="content">Entrepreneurs, STEM educators, vocational schools, and digital fabrication labs.</div>
+</div>
+
+<div class="slide">
+    <div class="title">Tech Stack</div>
+    <div class="content">Python (TensorFlow, OpenCV, NumPy), JS, D3.js, cloud APIs, GitHub, 3D G-code tools.</div>
+</div>
+
+<div class="slide">
+    <div class="title">Impact</div>
+    <div class="content">Accelerates the path from idea to tangible solution, supports eco-conscious design, and bridges the digital-physical gap for innovators in Palestine and globally.</div>
+</div>
+
+<div class="controls">
+    <button class="btn" onclick="prevSlide()">⬅ Previous</button>
+    <button class="btn" onclick="nextSlide()">Next ➡</button>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "ArrowRight") nextSlide();
+        if (event.key === "ArrowLeft") prevSlide();
+    });
+</script>
+
+</body>
+</html>

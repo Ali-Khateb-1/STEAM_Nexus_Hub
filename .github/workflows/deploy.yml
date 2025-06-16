@@ -30,5 +30,12 @@ jobs:
           done
           echo '</body></html>' >> index.html
 
-      - name: Upload and Deploy
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}

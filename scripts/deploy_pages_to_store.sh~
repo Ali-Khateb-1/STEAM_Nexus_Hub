@@ -1,0 +1,25 @@
+#!/bin/bash
+
+SOURCE_ROOT="."
+DEST_ROOT="./my-online-store"
+EXTENSIONS="html css js png jpg jpeg gif svg"
+
+echo "🚀 بدء تجميع الصفحات القابلة للنشر بدون حذف ما سبق..."
+
+mkdir -p "$DEST_ROOT"
+
+find "$SOURCE_ROOT" \( $(echo $EXTENSIONS | sed 's/[^ ]*/-iname "*.&"/g') \) \
+  -not -path "$DEST_ROOT/*" \
+  -not -path "*/.git/*" \
+  -not -path "*/__pycache__/*" \
+  -not -path "*/env/*" \
+  -not -path "*/.venv/*" \
+  -not -path "*/node_modules/*" \
+  | while read file; do
+    relative="${file#$SOURCE_ROOT/}"
+    dest="$DEST_ROOT/$relative"
+    mkdir -p "$(dirname "$dest")"
+    cp -u "$file" "$dest"
+done
+
+echo "✅ تم دمج الملفات داخل: $DEST_ROOT"
