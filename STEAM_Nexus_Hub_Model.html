@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Project - AI Digital Twin</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #111;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .slide {
+            width: 90vw;
+            height: 70vh;
+            padding: 40px;
+            display: none;
+            box-sizing: border-box;
+            border-radius: 10px;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+        .slide.active {
+            display: block;
+        }
+        .slide:nth-child(odd) {
+            background: #1a1a1a;
+        }
+        .title {
+            font-size: 2.5em;
+            color: #00c0ff;
+        }
+        .content {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: auto;
+        }
+        .layer {
+            padding: 60px;
+            background: #222;
+            margin-top: 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+        .layer h2 {
+            color: #00c0ff;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        .btn {
+            background-color: #007ACC;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .btn:hover {
+            background-color: #005A8D;
+        }
+    </style>
+</head>
+<body>
+
+<!-- الطبقة العليا - العرض التقديمي -->
+<div class="slide active">
+    <div class="title">Project Title</div>
+    <div class="content">AI-powered Digital Twin & Smart Prototyping Platform</div>
+</div>
+
+<div class="slide">
+    <div class="title">Impact</div>
+    <div class="content">Accelerates innovation, supports eco-conscious design, and bridges the digital-physical gap.</div>
+</div>
+
+<div class="controls">
+    <button class="btn" onclick="prevSlide()">⬅ Previous</button>
+    <button class="btn" onclick="nextSlide()">Next ➡</button>
+</div>
+
+<!-- الطبقات الأدنى - بدء التنفيذ -->
+<div class="layer">
+    <h2>🚀 Phase 1: Data Integration</h2>
+    <p>Using TensorFlow, OpenCV, and Pandas for AI training.</p>
+</div>
+
+<div class="layer">
+    <h2>⚙️ Phase 2: Prototyping</h2>
+    <p>Setting up cloud hosting and generating interactive 3D models.</p>
+</div>
+
+<div class="layer">
+    <h2>🎨 Phase 3: UX/UI & Marketing</h2>
+    <p>Designing a user-friendly interface for public testing and investor presentations.</p>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "ArrowRight") nextSlide();
+        if (event.key === "ArrowLeft") prevSlide();
+    });
+</script>
+
+</body>
+</html>
