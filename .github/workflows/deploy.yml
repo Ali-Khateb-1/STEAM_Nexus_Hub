@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Auto Sync & Deploy to GitHub Pages
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -20,7 +20,14 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
-      - name: Generate Index Page
+      - name: Sync gh-pages with main
+        run: |
+          git fetch origin
+          git checkout gh-pages || git checkout -b gh-pages
+          git merge origin/main
+          git push origin gh-pages
+
+      - name: Generate Index Page Automatically
         run: |
           echo '<!DOCTYPE html>' > index.html
           echo '<html lang="ar"><head><meta charset="UTF-8"><title>صفحات المستودع</title></head><body>' >> index.html
