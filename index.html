@@ -3,41 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚀 STEAM Nexus Hub</title>
+    <title>🚀 مركز STEAM Nexus - الحلول الذكية للابتكار</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #1e272e; color: #ecf0f1; text-align: center; padding: 20px; }
-        .container { max-width: 900px; margin: auto; background: #2c3e50; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
-        h1 { color: #f1c40f; }
-        .updates-box { background: #2980b9; padding: 20px; border-radius: 10px; box-shadow: 0 0 8px rgba(255, 255, 255, 0.2); }
-        .nav-links { list-style: none; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; }
-        .nav-links li { margin: 10px; }
-        .nav-links a { text-decoration: none; color: #ffffff; font-weight: bold; padding: 10px 15px; background: #34495e; border-radius: 5px; transition: 0.3s; }
-        .nav-links a:hover { background: #2c3e50; }
+        /* تحسين التأثير الزجاجي */
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(to bottom, rgba(255, 100, 0, 0.2), rgba(240, 240, 255, 0.3));
+            color: #FF9500;
+            text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.7);
+            margin: 0;
+            padding: 0;
+            overflow-y: auto; /* تفعيل التمرير العمودي */
+        }
+
+        /* الطبقات */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* شريط التنقل */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(52, 73, 94, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 12px;
+            position: relative;
+            z-index: 10;
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 22px;
+            margin: 0 12px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .navbar a:hover { text-decoration: underline; color: #FF9500; }
+
+        /* تأثير ماتريكس */
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* لضمان عدم تغطيته للعناصر الأخرى */
+        }
+
+        /* قسم العرض والترويج */
+        .promo-section {
+            width: 600px;
+            height: auto;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.6);
+            text-align: center;
+            z-index: 5;
+        }
+
+        /* إضافة إعلانات ترويجية */
+        .feature-box {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+
+        /* الباركود */
+        .barcode {
+            width: 400px;
+            height: 400px;
+            display: block;
+            margin: 20px auto;
+            background-image: url('https://raw.githubusercontent.com/Ali-Khateb-1/STEAM_Nexus_Hub/main/%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202025-06-14%20171407.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 10;
+        }
+
+        /* تحسين وضوح الروابط */
+        .links-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .links-container a {
+            display: block;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+            text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.7);
+            margin: 10px 0;
+            text-decoration: none;
+        }
+        .links-container a:hover {
+            color: #FF9500;
+        }
+
+        /* دعم العرض على الأجهزة الصغيرة */
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            .navbar { flex-direction: column; align-items: center; }
+            .promo-section { width: 350px; padding: 15px; }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>⚙️ STEAM Nexus Hub</h1>
+<!-- تأثير ماتريكس -->
+<canvas id="matrixCanvas"></canvas>
 
-    <section class="updates-box">
-        <h2>🆕 التحديثات الأخيرة</h2>
-        <p>✅ تحسين إدارة البيانات وضمان سرعة الأداء.</p>
-        <p>✅ دعم التكامل مع المستودعات الأخرى لتحسين التواصل بين النظم المختلفة.</p>
-        <p>✅ تعزيز أمان الملفات وضبط الوصول إلى البيانات.</p>
-    </section>
+<script>
+    const canvas = document.getElementById("matrixCanvas");
+    const ctx = canvas.getContext("2d");
 
-    <hr>
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    <h2>🔗 التنقل بين المستودعات</h2>
-    <ul class="nav-links">
-        <li><a href="https://ali-khateb-1.github.io/STEAM_Nexus_Hub/">🏠 الصفحة الرئيسية</a></li>
-        <li><a href="https://ali-khateb-1.github.io/STEAM_Nexus_Switchers_Lab/">🌀 Switchers Lab</a></li>
-        <li><a href="https://ali-khateb-1.github.io/STEAM-Forge/">🔧 Forge</a></li>
-        <li><a href="https://ali-khateb-1.github.io/STEAM_Data_Manager/">📂 Data Manager</a></li>
-        <li><a href="https://ali-khateb-1.github.io/my-online-store/">🛒 متجر إلكتروني</a></li>
-    </ul>
+    const symbols = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const matrixArray = [];
+    for (let i = 0; i < canvas.width / 15; i++) {
+        matrixArray[i] = Math.random() * canvas.height;
+    }
+
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#00ff00";
+        ctx.font = "15px monospace";
+
+        for (let i = 0; i < matrixArray.length; i++) {
+            const text = symbols[Math.floor(Math.random() * symbols.length)];
+            ctx.fillText(text, i * 15, matrixArray[i]);
+
+            matrixArray[i] += 15;
+            if (matrixArray[i] > canvas.height) {
+                matrixArray[i] = 0;
+            }
+        }
+    }
+
+    setInterval(drawMatrix, 50);
+</script>
+
+<!-- شريط التنقل -->
+<div class="navbar">
+    <a href="https://ali-khateb-1.github.io/STEAM_Nexus_Hub/">🏠 الصفحة الرئيسية</a>
+    <a href="https://ali-khateb-1.github.io/STEAM_Nexus_Hub/dashboard.html">📊 لوحة التحكم</a>
+    <a href="https://ali-khateb-1.github.io/STEAM_Nexus_Hub/profile.html">👤 الملف الشخصي</a>
 </div>
+
+<!-- قسم العرض والترويج -->
+<div class="promo-section">
+    <h2>🚀 STEAM Nexus - ابتكار المستقبل</h2>
+    <div class="feature-box">
+        <h3>🔍 تحليل ذكي للمنتجات</h3>
+        <p>استكشاف البيانات، تصنيف الأطعمة والنباتات، وإنشاء توصيات تغليف مستدامة.</p>
+    </div>
+    <div class="feature-box">
+        <h3>🎨 العلامة التجارية والتغليف الرقمي</h3>
+        <p>تحسين الهوية البصرية، إنشاء باركود للمنتج، وتصميم صفحات HTML ديناميكية.</p>
+    </div>
+</div>
+
+<!-- روابط التواصل الاجتماعي -->
+<div class="container links-container">
+    <h2>📞 تواصل معنا</h2>
+    <a href="https://www.linkedin.com/in/ali-khateeb-steam-ai-data-education-tech" target="_blank">🔗 LinkedIn</a>
+    <a href="https://github.com/Ali-Khateb-1" target="_blank">🔗 GitHub</a>
+    <a href="https://www.youtube.com/@Switchers_Gate" target="_blank">🔗 YouTube Channel</a>
+</div>
+
+<!-- باركود -->
+<div class="barcode"></div>
 
 </body>
 </html>
