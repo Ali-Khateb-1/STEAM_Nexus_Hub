@@ -1,134 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hackathon Project - AI Digital Twin</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #111;
-            color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        .slide {
-            width: 90vw;
-            height: 70vh;
-            padding: 40px;
-            display: none;
-            box-sizing: border-box;
-            border-radius: 10px;
-            transition: all 0.5s ease;
-            position: relative;
-        }
-        .slide.active {
-            display: block;
-        }
-        .slide:nth-child(odd) {
-            background: #1a1a1a;
-        }
-        .title {
-            font-size: 2.5em;
-            color: #00c0ff;
-        }
-        .content {
-            font-size: 1.2em;
-            max-width: 800px;
-            margin: auto;
-        }
-        .layer {
-            padding: 60px;
-            background: #222;
-            margin-top: 20px;
-            border-radius: 10px;
-            transition: all 0.3s ease-in-out;
-        }
-        .layer h2 {
-            color: #00c0ff;
-        }
-        .controls {
-            margin-top: 20px;
-        }
-        .btn {
-            background-color: #007ACC;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-            margin: 5px;
-        }
-        .btn:hover {
-            background-color: #005A8D;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚀 STEAM Nexus Hub</title>
+  <style>
+    /* عام */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #111;
+      color: #f0f0f0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* تأثير ماتريكس */
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      opacity: 0.75;
+      background: black;
+    }
+
+    /* الحاوية الرئيسية مع تأثير الزجاجية */
+    .container {
+      position: relative;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 165, 0, 0.9);
+    }
+
+    /* عنوان الصفحة مع تأثير Glow */
+    .container .title {
+      font-size: 2.5em;
+      color: #FF9500;
+      text-shadow: 0 0 20px rgba(255, 165, 0, 1);
+      margin-bottom: 20px;
+      animation: glow 2.5s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px rgba(255,165,0,0.7); }
+      to   { text-shadow: 0 0 25px rgba(255,165,0,1); }
+    }
+
+    /* صندوق التصفح */
+    .layer {
+      display: inline-block;
+      margin: 20px 10px;
+      padding: 20px 30px;
+      background: rgba(34, 34, 34, 0.85);
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 165, 0, 0.8);
+      transition: transform .3s;
+    }
+    .layer:hover {
+      transform: translateY(-5px);
+    }
+
+    /* الأزرار مع تأثير Pulse */
+    .layer a {
+      text-decoration: none;
+      display: block;
+      color: #fff;
+      font-weight: bold;
+      margin: 10px 0;
+      padding: 10px 15px;
+      background-color: #FF9500;
+      border-radius: 5px;
+      box-shadow: 0 0 15px rgba(255,165,0,0.8);
+      animation: pulse 2s infinite alternate ease-in-out;
+      transition: background .3s;
+    }
+    .layer a:hover {
+      background-color: #E07C00;
+      box-shadow: 0 0 35px rgba(255,165,0,1);
+    }
+    @keyframes pulse {
+      from { box-shadow: 0 0 12px rgba(255,165,0,0.6); }
+      to   { box-shadow: 0 0 30px rgba(255,165,0,1); }
+    }
+  </style>
 </head>
 <body>
 
-<!-- الطبقة العليا - العرض التقديمي -->
-<div class="slide active">
-    <div class="title">Project Title</div>
-    <div class="content">AI-powered Digital Twin & Smart Prototyping Platform</div>
-</div>
+  <!-- تأثير ماتريكس -->
+  <canvas id="matrixCanvas"></canvas>
+  <script>
+    const canvas = document.getElementById("matrixCanvas");
+    const ctx    = canvas.getContext("2d");
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
 
-<div class="slide">
-    <div class="title">Impact</div>
-    <div class="content">Accelerates innovation, supports eco-conscious design, and bridges the digital-physical gap.</div>
-</div>
+    const symbols  = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const fontSize = 18;
+    const cols     = Math.floor(canvas.width / fontSize);
+    const drops    = Array(cols).fill(0);
 
-<div class="controls">
-    <button class="btn" onclick="prevSlide()">⬅ Previous</button>
-    <button class="btn" onclick="nextSlide()">Next ➡</button>
-</div>
+    function draw() {
+      ctx.fillStyle = "rgba(0,0,0,0.1)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#0f0";
+      ctx.font      = fontSize + "px monospace";
 
-<!-- الطبقات الأدنى - بدء التنفيذ -->
-<div class="layer">
-    <h2>🚀 Phase 1: Data Integration</h2>
-    <p>Using TensorFlow, OpenCV, and Pandas for AI training.</p>
-</div>
-
-<div class="layer">
-    <h2>⚙️ Phase 2: Prototyping</h2>
-    <p>Setting up cloud hosting and generating interactive 3D models.</p>
-</div>
-
-<div class="layer">
-    <h2>🎨 Phase 3: UX/UI & Marketing</h2>
-    <p>Designing a user-friendly interface for public testing and investor presentations.</p>
-</div>
-
-<script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.remove('active');
-            if (i === index) {
-                slide.classList.add('active');
-            }
-        });
+      for (let i = 0; i < drops.length; i++) {
+        const text = symbols[Math.floor(Math.random() * symbols.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        drops[i] = (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+                 ? 0
+                 : drops[i] + 0.25;  // سرعة أبطأ للنصف
+      }
+      requestAnimationFrame(draw);
     }
+    draw();
+  </script>
 
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-    }
+  <div class="container">
+    <div class="title">⚙️ STEAM Nexus Hub</div>
 
-    function prevSlide() {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
-    }
-
-    document.addEventListener("keydown", function(event) {
-        if (event.key === "ArrowRight") nextSlide();
-        if (event.key === "ArrowLeft") prevSlide();
-    });
-</script>
+    <div class="layer">
+      <h2>🌐 تصفح الصفحات المتاحة</h2>
+      <a href="https://ali-khateb-1.github.io/STEAM_Nexus_Hub/">🏠 الصفحة الرئيسية</a>
+      <a href="https://ali-khateb-1.github.io/STEAM_Nexus_Switchers_Lab/">🌀 Switchers Lab</a>
+      <a href="https://ali-khateb-1.github.io/STEAM-Forge/">🔧 Forge</a>
+      <a href="https://ali-khateb-1.github.io/STEAM_Data_Manager/">📂 Data Manager</a>
+      <a href="https://ali-khateb-1.github.io/my-online-store/">🛒 المتجر الإلكتروني</a>
+    </div>
+  </div>
 
 </body>
 </html>
