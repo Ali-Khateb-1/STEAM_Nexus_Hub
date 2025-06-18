@@ -13,33 +13,21 @@
             text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.7);
             margin: 0;
             padding: 0;
-            overflow-y: auto; /* تفعيل التمرير العمودي */
+            overflow-y: auto;
         }
 
-        /* الطبقات */
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            backdrop-filter: blur(12px);
-            background: rgba(255, 255, 255, 0.15);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-            position: relative;
-            z-index: 10;
-        }
-
-        /* شريط التنقل */
+        /* تثبيت الشريط العلوي */
         .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
             background: rgba(52, 73, 94, 0.9);
             backdrop-filter: blur(10px);
             padding: 10px 25px;
-            border-radius: 12px;
-            position: relative;
-            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
         }
         .navbar a {
             color: #fff;
@@ -58,32 +46,40 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* لضمان عدم تغطيته للعناصر الأخرى */
+            z-index: -1;
         }
 
-        /* قسم العرض والترويج */
-        .promo-section {
-            width: 600px;
-            height: auto;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.2);
+        /* تحسين وضوح الروابط مع تأثير التوهج */
+        .section-container {
+            text-align: center;
+            margin-top: 30px;
             padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 0 30px rgba(255, 69, 0, 0.6);
-            text-align: center;
-            z-index: 5;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(255, 165, 0, 0.7);
         }
-
-        /* إضافة إعلانات ترويجية */
-        .feature-box {
-            background: rgba(255, 255, 255, 0.25);
-            padding: 15px;
+        .section-container h2 {
+            color: white;
+            text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.7);
+        }
+        .section-container a {
+            display: inline-block;
+            font-size: 22px;
+            color: white;
+            font-weight: bold;
+            text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.7);
+            margin: 15px;
+            text-decoration: none;
+            padding: 12px;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            margin-bottom: 15px;
+            background-color: rgba(34, 45, 60, 0.9);
+        }
+        .section-container a:hover {
+            background-color: #FF9500;
+            box-shadow: 0 0 25px rgba(255, 165, 0, 0.9);
         }
 
-        /* الباركود */
+        /* باركود */
         .barcode {
             width: 400px;
             height: 400px;
@@ -93,31 +89,6 @@
             background-size: contain;
             background-repeat: no-repeat;
             z-index: 10;
-        }
-
-        /* تحسين وضوح الروابط */
-        .links-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .links-container a {
-            display: block;
-            font-size: 24px;
-            color: white;
-            font-weight: bold;
-            text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.7);
-            margin: 10px 0;
-            text-decoration: none;
-        }
-        .links-container a:hover {
-            color: #FF9500;
-        }
-
-        /* دعم العرض على الأجهزة الصغيرة */
-        @media (max-width: 768px) {
-            .container { padding: 15px; }
-            .navbar { flex-direction: column; align-items: center; }
-            .promo-section { width: 350px; padding: 15px; }
         }
     </style>
 </head>
@@ -162,34 +133,40 @@
 
 <!-- شريط التنقل -->
 <div class="navbar">
-    <a href="https://ali-khateb-1.github.io/STEAM_Nexus_Hub/">🏠 الصفحة الرئيسية</a>
-    <a href="https://ali-khateb-1.github.io/STEAM_Nexus_Hub/dashboard.html">📊 لوحة التحكم</a>
-    <a href="https://ali-khateb-1.github.io/STEAM_Nexus_Hub/profile.html">👤 الملف الشخصي</a>
+    <a href="#">🏠 الصفحة الرئيسية</a>
+    <a href="#">📊 لوحة التحكم</a>
+    <a href="#">👤 الملف الشخصي</a>
 </div>
 
-<!-- قسم العرض والترويج -->
-<div class="promo-section">
-    <h2>🚀 STEAM Nexus - ابتكار المستقبل</h2>
-    <div class="feature-box">
-        <h3>🔍 تحليل ذكي للمنتجات</h3>
-        <p>استكشاف البيانات، تصنيف الأطعمة والنباتات، وإنشاء توصيات تغليف مستدامة.</p>
+<!-- المحتوى الرئيسي -->
+<div class="content">
+    <!-- تعريف المشروع -->
+    <div class="section-container">
+        <h2>✨ فكرة مشروع STEAM Nexus</h2>
+        <p>STEAM Nexus هو مركز ابتكاري يدمج بين التكنولوجيا والعلوم والفنون لإنشاء حلول متقدمة في مجالات الذكاء الاصطناعي، البيانات، والتعليم الرقمي.</p>
     </div>
-    <div class="feature-box">
-        <h3>🎨 العلامة التجارية والتغليف الرقمي</h3>
-        <p>تحسين الهوية البصرية، إنشاء باركود للمنتج، وتصميم صفحات HTML ديناميكية.</p>
+
+    <!-- روابط المشاريع -->
+    <div class="section-container">
+        <h2>🚀 المشاريع المنشورة</h2>
+        <a href="STEAM_Nexus_Hub_Model.html" target="_blank">🧩 نموذج STEAM Nexus Hub</a>
+        <a href="hub_index.html" target="_blank">🌐 Hub Index</a>
     </div>
-</div>
 
-<!-- روابط التواصل الاجتماعي -->
-<div class="container links-container">
-    <h2>📞 تواصل معنا</h2>
-    <a href="https://www.linkedin.com/in/ali-khateeb-steam-ai-data-education-tech" target="_blank">🔗 LinkedIn</a>
-    <a href="https://github.com/Ali-Khateb-1" target="_blank">🔗 GitHub</a>
-    <a href="https://www.youtube.com/@Switchers_Gate" target="_blank">🔗 YouTube Channel</a>
-</div>
+    <!-- روابط مستودعات GitHub -->
+    <div class="section-container">
+        <h2>🛠 مستودعات المشاريع على GitHub</h2>
+        <p>يمكنك استكشاف المشاريع البرمجية والابتكارية لدينا عبر مستودعات GitHub التالية:</p>
+        <a href="https://github.com/Ali-Khateb-1/STEAM_Nexus_Hub" target="_blank">🚀 STEAM Nexus Hub - النظام الأساسي</a>
+        <a href="https://github.com/Ali-Khateb-1/my-online-store" target="_blank">🛒 المتجر الإلكتروني - حلول التجارة الرقمية</a>
+        <a href="https://github.com/Ali-Khateb-1/STEAM_Nexus_Switchers_Lab" target="_blank">🌀 Switchers Lab - مختبر الابتكار الرقمي</a>
+        <a href="https://github.com/Ali-Khateb-1/STEAM-Forge" target="_blank">🔧 Forge - تطوير الأدوات التفاعلية</a>
+        <a href="https://github.com/Ali-Khateb-1/STEAM_Data_Manager" target="_blank">📂 Data Manager - تحليل وإدارة البيانات</a>
+    </div>
 
-<!-- باركود -->
-<div class="barcode"></div>
+    <!-- باركود -->
+    <div class="barcode"></div>
+</div>
 
 </body>
 </html>
