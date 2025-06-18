@@ -1,139 +1,242 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🚀 STEAM Nexus Hub</title>
   <style>
-    /* عام */
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Cairo', sans-serif;
       background: #111;
       color: #f0f0f0;
       text-align: center;
-      overflow: hidden;
+      overflow-x: hidden;
     }
-
-    /* تأثير ماتريكس */
     canvas {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: -1;
-      opacity: 0.75;
+      opacity: 0.6;
       background: black;
     }
-
-    /* الحاوية الرئيسية مع تأثير الزجاجية */
-    .container {
-      position: relative;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 40px;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255, 165, 0, 0.9);
+    #smokeCanvas {
+      z-index: -0.5 !important;
+      opacity: 0.08;
+      pointer-events: none;
     }
-
-    /* عنوان الصفحة مع تأثير Glow */
-    .container .title {
-      font-size: 2.5em;
-      color: #FF9500;
-      text-shadow: 0 0 20px rgba(255, 165, 0, 1);
-      margin-bottom: 20px;
-      animation: glow 2.5s infinite alternate;
+    .navbar {
+      position: fixed;
+      top: 0; width: 100%;
+      background: rgba(34,34,34,0.8);
+      backdrop-filter: blur(10px);
+      padding: 10px 25px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      z-index: 100;
     }
-    @keyframes glow {
-      from { text-shadow: 0 0 10px rgba(255,165,0,0.7); }
-      to   { text-shadow: 0 0 25px rgba(255,165,0,1); }
-    }
-
-    /* صندوق التصفح */
-    .layer {
-      display: inline-block;
-      margin: 20px 10px;
-      padding: 20px 30px;
-      background: rgba(34, 34, 34, 0.85);
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255, 165, 0, 0.8);
-      transition: transform .3s;
-    }
-    .layer:hover {
-      transform: translateY(-5px);
-    }
-
-    /* الأزرار مع تأثير Pulse */
-    .layer a {
-      text-decoration: none;
-      display: block;
+    .navbar a {
       color: #fff;
       font-weight: bold;
-      margin: 10px 0;
-      padding: 10px 15px;
-      background-color: #FF9500;
-      border-radius: 5px;
-      box-shadow: 0 0 15px rgba(255,165,0,0.8);
-      animation: pulse 2s infinite alternate ease-in-out;
-      transition: background .3s;
+      text-decoration: none;
+      font-size: 18px;
     }
-    .layer a:hover {
-      background-color: #E07C00;
-      box-shadow: 0 0 35px rgba(255,165,0,1);
+    .navbar a:hover {
+      color: #FF9500;
     }
-    @keyframes pulse {
-      from { box-shadow: 0 0 12px rgba(255,165,0,0.6); }
-      to   { box-shadow: 0 0 30px rgba(255,165,0,1); }
+    .container {
+      max-width: 900px;
+      margin: 120px auto 60px;
+      padding: 20px;
+    }
+    .slide {
+      display: none;
+      padding: 40px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 15px rgba(255, 165, 0, 0.7);
+    }
+    .slide.active {
+      display: block;
+    }
+    .slide h2 {
+      color: #FF9500;
+      font-size: 1.8em;
+      margin-bottom: 15px;
+    }
+    .slide p, .slide a {
+      font-size: 1.1em;
+      color: #fff;
+      text-decoration: none;
+      margin: 8px;
+      display: inline-block;
+      padding: 8px 12px;
+      background: rgba(34, 45, 60, 0.8);
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    .slide a:hover {
+      background: #FF9500;
+      color: #111;
+    }
+    .controls {
+      margin: 20px 0;
+    }
+    .btn {
+      background-color: rgba(255,255,255,0.05);
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn:hover {
+      background: #FF9500;
+      color: #111;
+      box-shadow: 0 0 20px rgba(255,165,0,0.6);
+    }
+    .barcode {
+      width: 300px;
+      height: 300px;
+      margin: 20px auto;
+      background-image: url('https://raw.githubusercontent.com/Ali-Khateb-1/STEAM_Nexus_Hub/main/لقطة%20شاشة%202025-06-14%20171407.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    #toggleSmokeBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      background: rgba(255, 149, 0, 0.9);
+      color: #111;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 149, 0, 0.6);
+      transition: background 0.3s;
+    }
+    #toggleSmokeBtn:hover {
+      background: #fff;
+      color: #FF9500;
     }
   </style>
 </head>
 <body>
 
-  <!-- تأثير ماتريكس -->
-  <canvas id="matrixCanvas"></canvas>
-  <script>
-    const canvas = document.getElementById("matrixCanvas");
-    const ctx    = canvas.getContext("2d");
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
+<canvas id="matrixCanvas"></canvas>
+<canvas id="smokeCanvas"></canvas>
+<button id="toggleSmokeBtn">🌀 إيقاف الدخان</button>
 
-    const symbols  = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const fontSize = 18;
-    const cols     = Math.floor(canvas.width / fontSize);
-    const drops    = Array(cols).fill(0);
+<div class="navbar">
+  <a href="#">🏠 الرئيسية</a>
+  <a href="#">📊 لوحة التحكم</a>
+  <a href="#">👤 الملف الشخصي</a>
+</div>
 
-    function draw() {
-      ctx.fillStyle = "rgba(0,0,0,0.1)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#0f0";
-      ctx.font      = fontSize + "px monospace";
+<div class="container">
 
-      for (let i = 0; i < drops.length; i++) {
-        const text = symbols[Math.floor(Math.random() * symbols.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        drops[i] = (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
-                 ? 0
-                 : drops[i] + 0.25;  // سرعة أبطأ للنصف
-      }
-      requestAnimationFrame(draw);
-    }
-    draw();
-  </script>
-
-  <div class="container">
-    <div class="title">⚙️ STEAM Nexus Hub</div>
-
-    <div class="layer">
-      <h2>🌐 تصفح الصفحات المتاحة</h2>
-      <a href="https://ali-khateb-1.github.io/STEAM_Nexus_Hub/">🏠 الصفحة الرئيسية</a>
-      <a href="https://ali-khateb-1.github.io/STEAM_Nexus_Switchers_Lab/">🌀 Switchers Lab</a>
-      <a href="https://ali-khateb-1.github.io/STEAM-Forge/">🔧 Forge</a>
-      <a href="https://ali-khateb-1.github.io/STEAM_Data_Manager/">📂 Data Manager</a>
-      <a href="https://ali-khateb-1.github.io/my-online-store/">🛒 المتجر الإلكتروني</a>
-    </div>
+  <div class="slide">
+    <h2>✨ فكرة مشروع STEAM Nexus</h2>
+    <p>مركز ابتكاري يجمع بين العلوم والتكنولوجيا والفنون لتقديم حلول ذكية في مجالات الذكاء الاصطناعي والبيانات والتعليم الرقمي.</p>
   </div>
 
-</body>
-</html>
+  <div class="slide">
+    <h2>🚀 المشاريع المنشورة</h2>
+    <a href="#">🧩 نموذج STEAM Nexus Hub</a>
+    <a href="#">🌐 Hub Index</a>
+  </div>
+
+  <div class="slide active">
+    <h2>🛠 مستودعات GitHub</h2>
+    <a href="#">🚀 النظام الأساسي</a>
+    <a href="#">🛒 المتجر الرقمي</a>
+    <a href="#">🌀 Switchers Lab</a>
+    <a href="#">🔧 Forge</a>
+    <a href="#">📂 Data Manager</a>
+  </div>
+
+  <div class="slide">
+    <h2>📲 باركود المشاركة</h2>
+    <div class="barcode"></div>
+  </div>
+
+  <div class="controls">
+    <button class="btn" onclick="prevSlide()">⬅ السابق</button>
+    <button class="btn" onclick="nextSlide()">التالي ➡</button>
+  </div>
+
+</div>
+
+<script>
+  // Matrix
+  const canvas = document.getElementById("matrixCanvas"),
+        ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const symbols = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const fontSize = 16;
+  const cols = Math.floor(canvas.width / fontSize);
+  const drops = Array(cols).fill(0);
+
+  function drawMatrix() {
+    ctx.fillStyle = "rgba(0,0,0,0.1)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = "#0f0";
+    ctx.font = fontSize + "px monospace";
+    for (let i = 0; i < drops.length; i++) {
+      const text = symbols[Math.floor(Math.random() * symbols.length)];
+      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+      drops[i] = (drops[i] * fontSize > canvas.height && Math.random() > 0.975) ? 0 : drops[i] + 0.25;
+    }
+    requestAnimationFrame(drawMatrix);
+  }
+  drawMatrix();
+
+  // Slides
+  const slides = document.querySelectorAll(".slide");
+  let current = 0;
+  function showSlide(i) {
+    slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
+  }
+  function nextSlide() {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }
+  function prevSlide() {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  }
+
+  // Smoke
+  const smokeCanvas = document.getElementById("smokeCanvas");
+  const smokeCtx = smokeCanvas.getContext("2d");
+  smokeCanvas.width = window.innerWidth;
+  smokeCanvas.height = window.innerHeight;
+
+  let smokeActive = true;
+  const particles = Array.from({length: 40}, () => ({
+    x: Math.random() * smokeCanvas.width,
+    y: smokeCanvas.height + Math.random() * 100,
+    r: 20 + Math.random() * 60,
+    alpha: 0.02 + Math.random() * 0.04,
+    speed: 0.2 + Math.random() * 0.4
+  }));
+
+  function drawSmoke() {
+    if (!smokeActive) return requestAnimationFrame(drawSmoke);
+    smokeCtx.clearRect(0, 0, smokeCanvas.width, smokeCanvas.height);
+    for (let p of particles) {
+      smokeCtx.beginPath();
+      smokeCtx.fillStyle = `rgba(200,200,200,${p.alpha})`;
+      smokeCtx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+      smokeCtx.fill
