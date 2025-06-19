@@ -5,89 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>🚀 مركز STEAM Nexus – الحلول الذكية للابتكار</title>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       margin: 0;
       padding: 0;
       font-family: 'Cairo', sans-serif;
       background: linear-gradient(to bottom, rgba(255,100,0,0.2), rgba(240,240,255,0.3));
       color: #FF9500;
-      overflow-y: auto;
-    }
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(52,73,94,0.9);
-      backdrop-filter: blur(8px);
-      padding: 10px 25px;
-      display: flex;
-      justify-content: space-between;
-      z-index: 100;
-    }
-    .navbar a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 20px;
-      font-weight: bold;
-      margin: 0 12px;
-      transition: all 0.3s;
-    }
-    .navbar a:hover {
-      color: #FF9500;
-      text-shadow: 0 0 10px rgba(255, 149, 0, 0.7);
+      overflow-x: hidden;
     }
     canvas {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       z-index: -1;
       opacity: 0.6;
     }
-    .content {
-      padding-top: 90px;
-      max-width: 900px;
-      margin: 0 auto 40px;
+    header, footer {
+      background: rgba(52,73,94,0.9);
+      color: white;
+      text-align: center;
+      padding: 12px 20px;
+      backdrop-filter: blur(8px);
     }
-    .glass-box {
+    header nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    header nav a:hover {
+      color: #FF9500;
+    }
+    .content {
+      max-width: 950px;
+      margin: auto;
+      padding: 100px 20px 40px;
+    }
+    section {
+      margin-bottom: 60px;
+      padding: 20px;
       background: rgba(255,255,255,0.15);
       border: 1px solid rgba(255,255,255,0.3);
       border-radius: 12px;
-      padding: 20px;
-      margin: 30px 10px;
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 4px 30px rgba(0,0,0,0.1);
       text-align: center;
     }
-    .glass-box h2 {
-      margin-top: 0;
+    section h2 {
       color: #FF9500;
       text-shadow: 0 0 8px rgba(255, 149, 0, 0.9);
     }
-    .glass-box p,
-    .glass-box a {
-      color: #fff;
-      font-size: 1.1em;
-      text-decoration: none;
+    section a, section p {
       display: inline-block;
-      margin: 10px 0;
-      padding: 8px 12px;
+      margin: 6px;
+      padding: 8px 14px;
       background: rgba(34,45,60,0.8);
+      color: white;
       border-radius: 8px;
-      transition: background .3s, box-shadow .3s;
+      text-decoration: none;
+      transition: background 0.3s;
       text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
     }
-    .glass-box a:hover {
+    section a:hover {
       background: #FF9500;
       color: #111;
-      box-shadow: 0 0 18px rgba(255, 149, 0, 0.8);
-      text-shadow: none;
     }
     .barcode {
-      width: 300px;
-      height: 300px;
+      width: 260px;
+      height: 260px;
       margin: 30px auto;
       background-image: url('https://raw.githubusercontent.com/Ali-Khateb-1/STEAM_Nexus_Hub/main/%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202025-06-14%20171407.png');
       background-size: contain;
@@ -107,69 +96,75 @@
   const fontSize = 15;
   const columns = Math.floor(canvas.width / fontSize);
   const drops = Array(columns).fill(0);
-
   function draw() {
     ctx.fillStyle = "rgba(0,0,0,0.05)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#0f0";
     ctx.font = fontSize + "px monospace";
-
     for (let i = 0; i < columns; i++) {
       const text = symbols[Math.floor(Math.random() * symbols.length)];
       ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-      drops[i] = drops[i] * fontSize > canvas.height && Math.random() > 0.975 ? 0 : drops[i] + 0.25;
+      drops[i] = (drops[i] * fontSize > canvas.height && Math.random() > 0.975) ? 0 : drops[i] + 0.25;
     }
     requestAnimationFrame(draw);
   }
   draw();
 </script>
 
-<div class="navbar">
-  <a href="#">🏠 الصفحة الرئيسية</a>
-  <a href="#">📊 لوحة التحكم</a>
-  <a href="#">👤 الملف الشخصي</a>
-</div>
+<!-- Header -->
+<header>
+  <nav>
+    <a href="#vision">الرؤية</a>
+    <a href="#projects">المشاريع</a>
+    <a href="#repos">المستودعات</a>
+    <a href="#platforms">المنصات</a>
+    <a href="#social">التواصل</a>
+  </nav>
+</header>
 
+<!-- Content Sections -->
 <div class="content">
+  <section id="vision">
+    <h2>🚀 رؤية مشروع STEAM Nexus</h2>
+    <p>مركز ابتكاري يدمج العلوم، التكنولوجيا، الهندسة، الفنون، والرياضيات لتقديم حلول ذكية في الذكاء الاصطناعي والتعليم البيئي والرقمي.</p>
+  </section>
 
-  <div class="glass-box">
-    <h2>رؤية مشروع STEAM Nexus</h2>
-    <p>مركز ابتكاري يدمج العلوم، التكنولوجيا، الهندسة، الفنون، والرياضيات لتقديم حلول ذكية في مجالات الذكاء الاصطناعي، تحليل البيانات، والتعليم الرقمي.</p>
-  </div>
-
-  <div class="glass-box">
-    <h2>المشروعات المُعتمدة</h2>
-    <a href="STEAM_Nexus_Hub_Model.html" target="_blank">نموذج مركز STEAM Nexus</a>
+  <section id="projects">
+    <h2>📂 المشاريع المعتمدة</h2>
+    <a href="STEAM_Nexus_Hub_Model.html" target="_blank">نموذج STEAM Nexus</a>
     <a href="hub_index.html" target="_blank">الواجهة العامة للمشروع</a>
-  </div>
+  </section>
 
-  <div class="glass-box">
-    <h2>المستودعات البرمجية على GitHub</h2>
+  <section id="repos">
+    <h2>🛠 مستودعات GitHub</h2>
     <a href="https://github.com/Ali-Khateb-1/STEAM_Nexus_Hub" target="_blank">النظام الأساسي</a>
-    <a href="https://github.com/Ali-Khateb-1/my-online-store" target="_blank">نظام المتجر الإلكتروني</a>
-    <a href="https://github.com/Ali-Khateb-1/STEAM_Nexus_Switchers_Lab" target="_blank">مختبر Switchers Lab</a>
-    <a href="https://github.com/Ali-Khateb-1/STEAM-Forge" target="_blank">منصة Forge لتطوير الأدوات</a>
-    <a href="https://github.com/Ali-Khateb-1/STEAM_Data_Manager" target="_blank">منظومة إدارة البيانات</a>
-  </div>
+    <a href="https://github.com/Ali-Khateb-1/my-online-store" target="_blank">المتجر الإلكتروني</a>
+    <a href="https://github.com/Ali-Khateb-1/STEAM_Nexus_Switchers_Lab" target="_blank">Switchers Lab</a>
+    <a href="https://github.com/Ali-Khateb-1/STEAM-Forge" target="_blank">Forge</a>
+    <a href="https://github.com/Ali-Khateb-1/STEAM_Data_Manager" target="_blank">Data Manager</a>
+  </section>
 
-  <div class="glass-box">
-    <h2>منصات الابتكار التقنية</h2>
+  <section id="platforms">
+    <h2>🌐 المنصات التفاعلية</h2>
     <a href="https://ali-khateb-1.github.io/my-online-store/" target="_blank">المتجر الإلكتروني</a>
-    <a href="https://ali-khateb-1.github.io/STEAM_Nexus_Switchers_Lab/" target="_blank">مختبر Switchers Lab</a>
-    <a href="https://ali-khateb-1.github.io/STEAM-Forge/" target="_blank">منصة Forge التفاعلية</a>
-    <a href="https://ali-khateb-1.github.io/STEAM_Data_Manager/" target="_blank">مدير البيانات الرقمية</a>
-  </div>
+    <a href="https://ali-khateb-1.github.io/STEAM_Nexus_Switchers_Lab/" target="_blank">Switchers Lab</a>
+    <a href="https://ali-khateb-1.github.io/STEAM-Forge/" target="_blank">Forge</a>
+    <a href="https://ali-khateb-1.github.io/STEAM_Data_Manager/" target="_blank">Data Manager</a>
+  </section>
 
-  <div class="glass-box">
-    <h2>منصات التواصل المهني</h2>
-    <a href="https://github.com/Ali-Khateb-1" target="_blank">GitHub – عرض المشروعات المفتوحة</a>
-    <a href="https://www.youtube.com/@AliKhateb" target="_blank">YouTube – العروض التوضيحية والشرح التقني</a>
-    <a href="https://www.linkedin.com/in/ali-khateb" target="_blank">LinkedIn – الملف المهني والسيرة الذاتية</a>
-  </div>
-
-  <div class="barcode"></div>
-
+  <section id="social">
+    <h2>📣 منصات التواصل المهني</h2>
+    <a href="https://github.com/Ali-Khateb-1" target="_blank">GitHub</a>
+    <a href="https://www.youtube.com/@AliKhateb" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/ali-khateb" target="_blank">LinkedIn</a>
+    <div class="barcode"></div>
+  </section>
 </div>
+
+<!-- Footer -->
+<footer>
+  جميع الحقوق محفوظة © STEAM Nexus 2025
+</footer>
 
 </body>
 </html>
