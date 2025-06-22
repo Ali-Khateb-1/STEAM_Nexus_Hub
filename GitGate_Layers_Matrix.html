@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Git Gate Identity</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0;
+      background: #0a0a0a;
+      height: 100%;
+      overflow: hidden;
+    }
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      opacity: 0.5;
+    }
+    .layer {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.12;
+      mix-blend-mode: lighten;
+      filter: blur(1.2px) brightness(1.1);
+      z-index: 1;
+    }
+    .barcode {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 140px;
+      opacity: 0.25;
+      filter: drop-shadow(0 0 6px #00ffd5);
+      z-index: 2;
+    }
+    .logo {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 360px;
+      z-index: 3;
+      filter: drop-shadow(0 0 20px #ff9500);
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="matrixCanvas"></canvas>
+
+<img class="layer" src="Copilot_20250622_043103.png" />
+<img class="layer" src="Copilot_20250622_043005.png" />
+<img class="layer" src="Copilot_20250622_042418.png" />
+<img class="barcode" src="لقطة شاشة 2025-06-14 171407.png" />
+<img class="logo" src="Copilot_20250622_043303.png" />
+
+<script>
+  const c = document.getElementById("matrixCanvas");
+  const ctx = c.getContext("2d");
+  c.width = window.innerWidth;
+  c.height = window.innerHeight;
+  const symbols = "01STEAMGATE";
+  const fontSize = 16;
+  const cols = Math.floor(c.width / fontSize);
+  const drops = Array(cols).fill(0);
+
+  function draw() {
+    ctx.fillStyle = "rgba(0,0,0,0.05)";
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.fillStyle = "#0f0";
+    ctx.font = fontSize + "px monospace";
+    for (let i = 0; i < cols; i++) {
+      const text = symbols[Math.floor(Math.random() * symbols.length)];
+      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+      drops[i] = (drops[i] * fontSize > c.height && Math.random() > 0.975) ? 0 : drops[i] + 0.25;
+    }
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+</script>
+
+</body>
+</html>

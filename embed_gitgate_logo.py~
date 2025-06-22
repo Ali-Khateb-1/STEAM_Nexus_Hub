@@ -1,0 +1,39 @@
+import base64
+
+image_path = "Copilot_20250622_043303.png"
+output_path = "GitGate_Logo_Embed.html"
+
+with open(image_path, "rb") as img_file:
+    encoded = base64.b64encode(img_file.read()).decode("utf-8")
+
+html = f"""
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Git Gate Logo</title>
+  <style>
+    body {{
+      background-color: #101010;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }}
+    img {{
+      max-width: 400px;
+      filter: drop-shadow(0 0 16px #FF9500);
+    }}
+  </style>
+</head>
+<body>
+  <img src="data:image/png;base64,{encoded}" alt="Git Gate Logo" />
+</body>
+</html>
+"""
+
+with open(output_path, "w", encoding="utf-8") as f:
+    f.write(html)
+
+print("✅ تم إنشاء GitGate_Logo_Embed.html بنجاح!")
