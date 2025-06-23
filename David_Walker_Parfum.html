@@ -36,10 +36,12 @@
     bufferCanvas.height = h;
     const btx = bufferCanvas.getContext('2d');
     btx.drawImage(img, 0, 0);
-    const imageData = btx.getImageData(0, 0, w, h);
-    const fullData = imageData.data;
+    const fullData = btx.getImageData(0, 0, w, h).data;
 
     let yOffsets = Array(w).fill(0);
+    const centerX = Math.floor(w / 2);
+    const centerY = Math.floor(h / 2);
+    const safeRadius = 100; // نصف قطر المنطقة المحمية حول الزجاجة
 
     function draw() {
       const frame = ctx.getImageData(0, 0, w, h);
@@ -48,6 +50,12 @@
       for (let x = 0; x < w; x++) {
         const y = Math.floor(yOffsets[x]);
         if (y >= h) continue;
+
+        const dx = x - centerX;
+        const dy = y - centerY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < safeRadius) continue; // تجاهل المنطقة الوسطى
 
         const i = (y * w + x) * 4;
         data[i] = fullData[i];
